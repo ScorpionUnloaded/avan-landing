@@ -1,0 +1,62 @@
+/* ============================================================
+   AVAN Group — CSS custom properties (runtime token layer).
+   Values mirror ../avan-color-tokens.json and ../avan-motion-tokens.json.
+   Font family variables (--avan-font-*) are wired in app/layout.tsx.
+   ============================================================ */
+:root {
+  /* --- Color: base --- */
+  --avan-cream: #F4F1EA;
+  --avan-cream-raised: #FAF8F3;
+  --avan-white: #FFFFFF;
+  --avan-obsidian: #0A0E14;
+
+  /* --- Color: ink (Imperial Navy) --- */
+  --avan-ink-700: #3F5377;
+  --avan-ink-800: #2B3B57;
+  --avan-ink-900: #141E2D;
+  --avan-ink-950: #0E1722;
+  --avan-ink-overlay: #16202E;
+
+  /* --- Color: bronze (Sovereign Bronze / gilt) --- */
+  --avan-bronze-300: #D4BD9A;
+  --avan-bronze-400: #C5A572;
+  --avan-bronze-500: #A8895C;
+  --avan-bronze-600: #8A6E45;
+  --avan-bronze-700: #664F29;
+
+  /* --- Semantic (light context) --- */
+  --avan-surface-base: var(--avan-cream);
+  --avan-surface-raised: var(--avan-cream-raised);
+  --avan-surface-inverse: var(--avan-ink-900);
+  --avan-text-primary: #2A2E35;
+  --avan-text-secondary: #5C6470;
+  /* bronze-700, not bronze-600: bronze-600 on cream is 4.23:1, just under the
+     4.5:1 AA threshold for normal text. bronze-700 clears it (6.86–7.29:1). */
+  --avan-text-eyebrow: var(--avan-bronze-700);
+  --avan-text-on-inverse: #ECEAE2;
+  --avan-text-on-inverse-soft: #9FA8B4;
+  --avan-border-hairline: rgba(138, 110, 69, 0.28);
+  --avan-border-hairline-dark: rgba(197, 165, 114, 0.22);
+  --avan-action-primary-bg: var(--avan-ink-900);
+  --avan-action-accent: var(--avan-bronze-500);
+  /* bronze-600, not bronze-400: focus indicators need only 3:1 (SC 1.4.11,
+     non-text), but bronze-400 on cream is 2.07:1 and fails it. bronze-600
+     clears 3:1 on both cream (4.23:1) and navy-950 (3.78:1). */
+  --avan-focus-ring: var(--avan-bronze-600);
+
+  /* --- Motion: easing --- */
+  --avan-ease-standard: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --avan-ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  --avan-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --avan-ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+
+  /* --- Motion: duration --- */
+  --avan-dur-fast: 100ms;
+  --avan-dur-normal: 200ms;
+  --avan-dur-slow: 300ms;
+  --avan-dur-deliberate: 500ms;
+
+  /* --- Structure --- */
+  --avan-divider: 3px;
+  --avan-hairline: 1px;
+}
