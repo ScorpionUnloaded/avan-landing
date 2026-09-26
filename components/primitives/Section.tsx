@@ -6,7 +6,7 @@ type Surface = "cream" | "cream-raised" | "navy";
 const surfaceClasses: Record<Surface, string> = {
   cream: "bg-cream text-ftext",
   "cream-raised": "bg-cream-raised text-ftext",
-  navy: "bg-ink-950 text-[color:var(--avan-text-on-inverse)]",
+  navy: "bg-ink-950 text-(--avan-text-on-inverse)",
 };
 
 /** A page movement: full-bleed surface, audit-grade vertical rhythm, 1320px inner column. */

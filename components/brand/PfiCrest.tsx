@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "motion/react";
 import { CrownMark } from "./CrownMark";
 import { PfiMark } from "./PfiMark";
 import { DrawnRule } from "@/components/motion/DrawnRule";
@@ -50,7 +50,7 @@ export function PfiCrest({ motto, crestAlt }: { motto: string; crestAlt: string 
           src="/brand/crest-lion.webp"
           alt=""
           aria-hidden="true"
-          className="absolute left-0 top-1/2 h-40 w-auto -translate-x-[110%] -translate-y-1/2 lg:h-52"
+          className="absolute left-0 top-1/2 h-40 w-auto translate-x-[-110%] -translate-y-1/2 lg:h-52"
           onError={() => setLionOk(false)}
         />
       )}

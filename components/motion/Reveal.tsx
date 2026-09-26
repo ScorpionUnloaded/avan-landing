@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, type HTMLMotionProps } from "framer-motion";
+import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react";
 import { duration, ease, SLIDE_DISTANCE } from "@/lib/tokens";
 
 type RevealProps = HTMLMotionProps<"div"> & {

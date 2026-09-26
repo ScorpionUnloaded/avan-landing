@@ -31,7 +31,7 @@ export function EditorialImage({
   return (
     <figure
       className={cn(
-        "group relative overflow-hidden border border-[color:var(--avan-border-hairline)] bg-cream-raised",
+        "group relative overflow-hidden border border-(--avan-border-hairline) bg-cream-raised",
         className,
       )}
       style={{ aspectRatio: ratio }}
@@ -42,7 +42,7 @@ export function EditorialImage({
           alt={alt}
           fill
           sizes={sizes}
-          className="object-cover transition-transform duration-[1600ms] ease-standard motion-safe:group-hover:scale-[1.03]"
+          className="object-cover transition-transform duration-1600 ease-standard motion-safe:group-hover:scale-[1.03]"
           onError={() => setFailed(true)}
         />
       )}

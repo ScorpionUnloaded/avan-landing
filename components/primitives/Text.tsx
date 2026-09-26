@@ -28,7 +28,7 @@ export function Text({
         "font-sans max-w-prose68",
         sizeClasses[size],
         // On dark surfaces, --avan-text-secondary is remapped in the .avan-dark scope.
-        tone === "soft" ? "text-[color:var(--avan-text-secondary)]" : "",
+        tone === "soft" ? "text-(--avan-text-secondary)" : "",
         className,
       )}
     >

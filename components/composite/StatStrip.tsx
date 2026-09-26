@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import { duration, ease, STAGGER_INTERVAL } from "@/lib/tokens";
 
 type Stat = { value: string; label: string };
@@ -12,13 +12,12 @@ function Figure({ value, label, active }: Stat & { active: boolean }) {
   const isNumeric = /^\d+$/.test(value);
   const target = isNumeric ? parseInt(value, 10) : 0;
   const pad = value.length;
-  const [display, setDisplay] = useState(isNumeric && !reduce ? "0".padStart(pad, "0") : value);
+  const [counted, setCounted] = useState("0".padStart(pad, "0"));
+  // Non-numeric figures (∞) and reduced motion show the final value outright.
+  const display = !isNumeric || reduce ? value : counted;
 
   useEffect(() => {
-    if (!active || !isNumeric || reduce) {
-      setDisplay(value);
-      return;
-    }
+    if (!active || !isNumeric || reduce) return;
     let raf = 0;
     const start = performance.now();
     const ms = 600;
@@ -26,7 +25,7 @@ function Figure({ value, label, active }: Stat & { active: boolean }) {
       const t = Math.min(1, (now - start) / ms);
       const eased = 1 - Math.pow(1 - t, 3);
       const current = Math.round(eased * target);
-      setDisplay(String(current).padStart(pad, "0"));
+      setCounted(String(current).padStart(pad, "0"));
       if (t < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -34,13 +33,13 @@ function Figure({ value, label, active }: Stat & { active: boolean }) {
   }, [active, isNumeric, reduce, target, pad, value]);
 
   return (
-    <div className="flex flex-col gap-3 border-t border-[color:var(--avan-border-hairline)] pt-5">
+    <div className="flex flex-col gap-3 border-t border-(--avan-border-hairline) pt-5">
       {/* bronze-600 on cream-raised = 4.50:1 — passes AA even at normal size,
           comfortably at this monumental size. The gild returns where it's legal. */}
       <span className="font-mono text-stat font-normal tabular-nums text-bronze-600">
         {display}
       </span>
-      <span className="font-mono text-overline uppercase text-[color:var(--avan-text-eyebrow)]">
+      <span className="font-mono text-overline uppercase text-(--avan-text-eyebrow)">
         {label}
       </span>
     </div>

@@ -1,14 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "../styles/theme.css";
 
-/* Font stacks compose the next/font variables (set on <html>) with the licensed
-   primary faces. If Suisse Int'l is self-hosted/installed, it wins; otherwise the
-   loaded grotesque (Hanken) carries — never Inter. */
+/* Font stacks compose the next/font variables (set on <html>). The brand's
+   primary sans is Suisse Int'l; until it is licensed, Hanken Grotesk carries
+   the text face (never Inter — see docs/brand-decisions.md). */
 :root {
   --avan-font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
-  --avan-font-sans: var(--font-suisse), "Suisse Int'l", system-ui, sans-serif;
+  --avan-font-sans: var(--font-text), "Suisse Int'l", system-ui, sans-serif;
   --avan-font-mono: "Suisse Int'l Mono", var(--font-plex-mono), ui-monospace, monospace;
+}
+
+/* Tailwind v4 preflight differs from v3 in two places this design relied on. */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--avan-border-hairline, currentColor);
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 @layer base {

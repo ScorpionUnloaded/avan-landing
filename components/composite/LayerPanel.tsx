@@ -11,10 +11,10 @@ export function LayerPanel({
   return (
     <div className="flex flex-col gap-3">
       <span className="font-serif text-display-l font-medium leading-none">{label}</span>
-      <span className="font-mono text-overline uppercase text-[color:var(--avan-text-eyebrow)]">
+      <span className="font-mono text-overline uppercase text-(--avan-text-eyebrow)">
         {role}
       </span>
-      <p className="font-sans text-body text-[color:var(--avan-text-secondary)]">{note}</p>
+      <p className="font-sans text-body text-(--avan-text-secondary)">{note}</p>
     </div>
   );
 }

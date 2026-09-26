@@ -18,7 +18,7 @@ export function Colophon({ copy, locale }: { copy: Copy["colophon"]; locale: Loc
   return (
     <footer
       id="colophon"
-      className="avan-dark avan-depth bg-ink-950 py-section-y-sm text-[color:var(--avan-text-on-inverse)] md:py-section-y"
+      className="avan-dark avan-depth bg-ink-950 py-section-y-sm text-(--avan-text-on-inverse) md:py-section-y"
     >
       <Container>
         <Reveal className="flex flex-col gap-14">
@@ -26,7 +26,7 @@ export function Colophon({ copy, locale }: { copy: Copy["colophon"]; locale: Loc
             {copy.closing}
           </Heading>
 
-          <Divider className="bg-[color:var(--avan-border-hairline-dark)]" />
+          <Divider className="bg-(--avan-border-hairline-dark)" />
 
           <div className="flex flex-col justify-between gap-12 md:flex-row md:items-end">
             <div className="flex flex-col gap-6">

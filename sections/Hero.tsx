@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "motion/react";
 import { GemMark } from "@/components/brand/GemMark";
 import { InViewTracker } from "@/components/motion/InViewTracker";
 import { duration, ease } from "@/lib/tokens";
@@ -16,7 +16,7 @@ export function Hero({ copy }: { copy: Copy["hero"] }) {
     animate: { opacity: 1, y: 0 },
     transition: {
       duration: reduce ? duration.fast : duration.deliberate,
-      ease: reduce ? "linear" : ease.emphasized,
+      ease: reduce ? ("linear" as const) : ease.emphasized,
       delay: reduce ? 0 : delay,
     },
   });
@@ -25,7 +25,7 @@ export function Hero({ copy }: { copy: Copy["hero"] }) {
     <section
       id="hero"
       aria-label="AVAN Group"
-      className="avan-dark relative flex min-h-[100svh] flex-col overflow-hidden bg-ink-950 text-cream"
+      className="avan-dark relative flex min-h-svh flex-col overflow-hidden bg-ink-950 text-cream"
     >
       {/* Designed atmosphere — the intentional fallback shown until hero footage exists. */}
       <div aria-hidden="true" className="hero-atmosphere" />
@@ -90,7 +90,7 @@ export function Hero({ copy }: { copy: Copy["hero"] }) {
             }
             transition={{
               duration: reduce ? duration.fast : 1.1,
-              ease: reduce ? "linear" : ease.emphasized,
+              ease: reduce ? ("linear" as const) : ease.emphasized,
               delay: reduce ? 0 : 0.15,
             }}
             className="font-serif text-display-xl font-medium"
@@ -109,7 +109,7 @@ export function Hero({ copy }: { copy: Copy["hero"] }) {
 
         <motion.div
           {...rise(0.75)}
-          className="flex items-center justify-between gap-6 border-t border-[color:var(--avan-border-hairline-dark)] pt-6"
+          className="flex items-center justify-between gap-6 border-t border-(--avan-border-hairline-dark) pt-6"
         >
           <a
             href={copy.secondaryCta.hash}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useInView } from "framer-motion";
+import { useInView } from "motion/react";
 import { track } from "@/lib/analytics";
 
 type Event = Parameters<typeof track>[0];

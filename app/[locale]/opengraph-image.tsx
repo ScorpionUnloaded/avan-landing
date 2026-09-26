@@ -18,8 +18,9 @@ const strap: Record<string, string> = {
   fr: "Une maison patrimoniale — finance · technologie · capital · culture.",
 };
 
-export default function OpengraphImage({ params }: { params: { locale: string } }) {
-  const locale = params.locale === "fr" ? "fr" : "en";
+export default async function OpengraphImage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: raw } = await params;
+  const locale = raw === "fr" ? "fr" : "en";
   return new ImageResponse(
     (
       <div

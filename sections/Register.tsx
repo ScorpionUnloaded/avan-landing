@@ -22,10 +22,10 @@ export function Register({ copy }: { copy: Copy["register"] }) {
             {copy.litany.map((line) => (
               <StaggerItem
                 key={line}
-                className="flex items-baseline gap-5 border-b border-[color:var(--avan-border-hairline)] py-5 last:border-b-0"
+                className="flex items-baseline gap-5 border-b border-(--avan-border-hairline) py-5 last:border-b-0"
               >
                 <span aria-hidden className="mt-1 block h-2 w-2 shrink-0 rotate-45 border border-bronze-400" />
-                <p className="font-sans text-body-lg text-[color:var(--avan-text-primary)]">{line}</p>
+                <p className="font-sans text-body-lg text-(--avan-text-primary)">{line}</p>
               </StaggerItem>
             ))}
           </Stagger>

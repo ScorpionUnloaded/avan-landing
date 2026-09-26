@@ -31,7 +31,7 @@ export function HouseDocument({
             <Heading id="doc-h" as="h1" level="l">
               {doc.title}
             </Heading>
-            <p className="font-mono text-overline uppercase text-[color:var(--avan-text-eyebrow)]">
+            <p className="font-mono text-overline uppercase text-(--avan-text-eyebrow)">
               {doc.updated}
             </p>
             <Divider className="mt-4" />

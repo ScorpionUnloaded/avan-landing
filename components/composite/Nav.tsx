@@ -41,7 +41,7 @@ export function Nav({
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,color] duration-normal ease-standard",
         condensed
-          ? "border-b border-[color:var(--avan-border-hairline)] bg-cream/85 text-ftext backdrop-blur-md"
+          ? "border-b border-(--avan-border-hairline) bg-cream/85 text-ftext backdrop-blur-md"
           : "border-b border-transparent bg-transparent text-cream",
       )}
     >
@@ -66,7 +66,7 @@ export function Nav({
           <a
             href={switchHref}
             aria-label={copy.localeSwitch.aria}
-            className="avan-underline font-mono text-overline uppercase text-[color:var(--avan-text-eyebrow)] transition-colors duration-fast hover:text-bronze-500"
+            className="avan-underline font-mono text-overline uppercase text-(--avan-text-eyebrow) transition-colors duration-fast hover:text-bronze-500"
           >
             {copy.localeSwitch.code}
           </a>
@@ -91,7 +91,7 @@ export function Nav({
             <a
               href={switchHref}
               aria-label={copy.localeSwitch.aria}
-              className="avan-underline flex min-h-[44px] items-center whitespace-nowrap font-mono text-overline uppercase text-[color:var(--avan-text-eyebrow)] transition-colors duration-fast hover:text-bronze-500"
+              className="avan-underline flex min-h-[44px] items-center whitespace-nowrap font-mono text-overline uppercase text-(--avan-text-eyebrow) transition-colors duration-fast hover:text-bronze-500"
             >
               {copy.localeSwitch.code}
             </a>

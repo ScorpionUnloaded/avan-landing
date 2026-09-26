@@ -138,7 +138,7 @@ export async function POST(req: Request) {
 
   if (!sinkConfigured && process.env.NODE_ENV !== "production") {
     // No sink configured: log a minimal, non-PII trace in development.
-    // eslint-disable-next-line no-console
+     
     console.log("[avan:inquiry] received (no sink configured)", { nature: inquiry.nature });
   }
 

@@ -5,7 +5,7 @@ import { NextResponse, type NextRequest } from "next/server";
  * internally rewritten to the `/en/*` tree; French lives at `/fr/*`. A direct
  * hit on `/en/*` redirects to the clean root so there is exactly one URL per page.
  */
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   if (pathname === "/en" || pathname.startsWith("/en/")) {

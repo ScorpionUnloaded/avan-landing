@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { Cormorant_Garamond, IBM_Plex_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import { Cormorant_Garamond, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "../../styles/tokens.css";
 import "../globals.css";
 import { getCopy } from "@/content";
@@ -9,26 +8,24 @@ import { SITE_URL } from "@/lib/site";
 import { isLocale, locales, homePath, type Locale } from "@/lib/locale";
 
 const serif = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500"],
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-cormorant",
   display: "swap",
 });
 
-// Licensed Suisse Int'l (Regular). 500 maps to the same file to avoid faux-bold
-// until a Medium weight is licensed. Self-hosted via next/font/local.
-const sans = localFont({
-  src: [
-    { path: "../fonts/SuisseIntl-Regular.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/SuisseIntl-Regular.woff2", weight: "500", style: "normal" },
-  ],
-  variable: "--font-suisse",
+// Text face. The brand names Suisse Int'l; until it is licensed, Hanken Grotesk
+// (variable, OFL) carries every weight through the same --font-text slot, so a
+// licensed Suisse drops in by swapping this loader for next/font/local.
+const sans = Hanken_Grotesk({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-text",
   display: "swap",
 });
 
 const mono = IBM_Plex_Mono({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["400", "500"],
   variable: "--font-plex-mono",
   display: "swap",
@@ -38,8 +35,11 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
-  const locale: Locale = isLocale(params.locale) ? params.locale : "en";
+export async function generateMetadata({
+  params,
+}: LayoutProps<"/[locale]">): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale: Locale = isLocale(raw) ? raw : "en";
   const c = getCopy(locale);
   return {
     metadataBase: new URL(SITE_URL),
@@ -68,15 +68,10 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
-export default function RootLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
-  if (!isLocale(params.locale)) notFound();
-  const c = getCopy(params.locale);
+export default async function RootLayout({ children, params }: LayoutProps<"/[locale]">) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const c = getCopy(locale);
 
   const orgJsonLd = {
     "@context": "https://schema.org",
@@ -88,7 +83,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang={params.locale} className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
+    <html lang={locale} className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
       <body className="bg-cream font-sans text-body text-ftext antialiased">
         <a href="#main" className="skip-link">
           {c.nav.skip}

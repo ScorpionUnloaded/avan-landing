@@ -20,13 +20,13 @@ export function Prive({ copy, micro }: { copy: Copy["prive"]; micro: Copy["micro
 
           {/* The protocol — the terms under which an inquiry is received,
               stated where the hesitation happens (plan §J.3, trust density). */}
-          <dl className="mt-4 flex flex-col gap-5 border-t border-[color:var(--avan-border-hairline)] pt-7">
+          <dl className="mt-4 flex flex-col gap-5 border-t border-(--avan-border-hairline) pt-7">
             {copy.protocol.map((p) => (
               <div key={p.term} className="grid gap-1.5">
-                <dt className="font-mono text-overline uppercase text-[color:var(--avan-text-eyebrow)]">
+                <dt className="font-mono text-overline uppercase text-(--avan-text-eyebrow)">
                   {p.term}
                 </dt>
-                <dd className="max-w-md font-sans text-caption text-[color:var(--avan-text-secondary)]">
+                <dd className="max-w-md font-sans text-caption text-(--avan-text-secondary)">
                   {p.line}
                 </dd>
               </div>

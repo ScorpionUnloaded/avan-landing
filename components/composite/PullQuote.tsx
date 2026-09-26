@@ -11,7 +11,7 @@ export function PullQuote({ quote, attribution }: { quote: string; attribution: 
       <blockquote className="relative font-serif text-display-l font-normal italic leading-[1.15]">
         {quote}
       </blockquote>
-      <figcaption className="mt-10 font-mono text-overline uppercase text-[color:var(--avan-text-eyebrow)]">
+      <figcaption className="mt-10 font-mono text-overline uppercase text-(--avan-text-eyebrow)">
         {attribution}
       </figcaption>
     </figure>

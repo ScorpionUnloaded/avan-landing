@@ -7,13 +7,13 @@ const base =
   // py-3 + 11px overline text alone computes to ~39px, short of the 44px floor.
   "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-sm px-6 py-3 font-mono text-overline uppercase " +
   "transition-[transform,background-color,color,border-color] duration-normal ease-standard " +
-  "active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze-600 focus-visible:ring-offset-2 " +
-  "focus-visible:ring-offset-[color:var(--avan-surface-base)] disabled:pointer-events-none disabled:opacity-50";
+  "active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-bronze-600 focus-visible:ring-offset-2 " +
+  "focus-visible:ring-offset-(--avan-surface-base) disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
   solid: "bg-ink-900 text-cream hover:bg-ink-800 motion-safe:hover:-translate-y-px",
   hairline:
-    "border border-[color:var(--avan-border-hairline)] text-current hover:border-bronze-400 hover:text-bronze-600 motion-safe:hover:-translate-y-px",
+    "border border-(--avan-border-hairline) text-current hover:border-bronze-400 hover:text-bronze-600 motion-safe:hover:-translate-y-px",
   ghost: "text-current hover:text-bronze-600",
 };
 

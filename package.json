@@ -2,33 +2,39 @@
   "name": "avan-landing",
   "version": "1.0.0",
   "private": true,
-  "description": "AVAN Group — landing page. Built to the AVAN_LANDING_BUILD_PLAN.",
+  "description": "AVAN Group — the house's public site. Next.js 16, brand tokens (DTCG), EN/FR.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {
     "clsx": "2.1.1",
-    "framer-motion": "11.11.9",
-    "next": "14.2",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "sharp": "^0.35.3",
-    "tailwind-merge": "2.5.4",
-    "zod": "3.23.8"
+    "motion": "13.4.4",
+    "next": "16.3.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "sharp": "0.35.4",
+    "tailwind-merge": "3.7.0",
+    "zod": "4.6.5"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
-    "@playwright/test": "^1.56.1",
-    "@types/node": "20.16.11",
-    "@types/react": "18.3.11",
-    "@types/react-dom": "18.3.0",
-    "autoprefixer": "10.4.20",
+    "@playwright/test": "1.56.1",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "22.20.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.6",
     "lighthouse": "^13.5.0",
-    "postcss": "8.4.47",
-    "tailwindcss": "3.4.14",
-    "typescript": "5.6.3"
+    "postcss": "8.5.28",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

@@ -4,8 +4,11 @@ import { HouseDocument } from "@/components/composite/HouseDocument";
 import { getCopy } from "@/content";
 import { isLocale, type Locale } from "@/lib/locale";
 
-export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
-  const locale: Locale = isLocale(params.locale) ? params.locale : "en";
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/privacy">): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale: Locale = isLocale(raw) ? raw : "en";
   const m = getCopy(locale).privacy.meta;
   return {
     title: m.title,
@@ -17,8 +20,9 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
   };
 }
 
-export default function PrivacyPage({ params }: { params: { locale: string } }) {
-  if (!isLocale(params.locale)) notFound();
-  const c = getCopy(params.locale);
-  return <HouseDocument copy={c} doc={c.privacy} locale={params.locale} currentPath="/privacy" />;
+export default async function PrivacyPage({ params }: PageProps<"/[locale]/privacy">) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const c = getCopy(locale);
+  return <HouseDocument copy={c} doc={c.privacy} locale={locale} currentPath="/privacy" />;
 }

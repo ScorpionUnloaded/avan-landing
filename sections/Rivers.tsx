@@ -24,10 +24,10 @@ export function Rivers({ copy }: { copy: Copy["rivers"] }) {
         </Text>
       </Reveal>
 
-      <Stagger className="mt-20 border-t border-[color:var(--avan-border-hairline)]">
+      <Stagger className="mt-20 border-t border-(--avan-border-hairline)">
         {copy.cards.map((card, i) => (
           <StaggerItem key={card.title}>
-            <article className="group grid gap-x-8 gap-y-4 border-b border-[color:var(--avan-border-hairline)] py-10 transition-colors duration-slow hover:bg-cream-raised/70 md:grid-cols-12 md:items-baseline md:py-12">
+            <article className="group grid gap-x-8 gap-y-4 border-b border-(--avan-border-hairline) py-10 transition-colors duration-slow hover:bg-cream-raised/70 md:grid-cols-12 md:items-baseline md:py-12">
               <div className="flex items-baseline gap-6 md:col-span-4">
                 <span className="font-mono text-caption text-bronze-500 transition-colors duration-normal group-hover:text-bronze-600">
                   0{i + 1}
@@ -37,14 +37,14 @@ export function Rivers({ copy }: { copy: Copy["rivers"] }) {
                 </h3>
               </div>
               <div className="md:col-span-5">
-                <p className="font-sans text-body-lg text-[color:var(--avan-text-primary)]">
+                <p className="font-sans text-body-lg text-(--avan-text-primary)">
                   {card.lede}
                 </p>
-                <p className="mt-2 font-sans text-body text-[color:var(--avan-text-secondary)]">
+                <p className="mt-2 font-sans text-body text-(--avan-text-secondary)">
                   {card.body}
                 </p>
               </div>
-              <p className="font-mono text-overline uppercase text-[color:var(--avan-text-eyebrow)] md:col-span-3 md:text-right">
+              <p className="font-mono text-overline uppercase text-(--avan-text-eyebrow) md:col-span-3 md:text-right">
                 {card.house}
               </p>
             </article>

@@ -19,7 +19,7 @@ export function Layers({ copy }: { copy: Copy["layers"] }) {
           <Text size="lg">{copy.body}</Text>
         </Reveal>
 
-        <div aria-hidden className="hidden bg-[color:var(--avan-border-hairline)] lg:block" />
+        <div aria-hidden className="hidden bg-(--avan-border-hairline) lg:block" />
 
         <Reveal delay={0.1} className="flex flex-col justify-center gap-12">
           {copy.panels.map((panel) => (

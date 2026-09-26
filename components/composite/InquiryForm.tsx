@@ -12,12 +12,12 @@ type Status = "idle" | "submitting" | "success" | "error";
 type Nature = (typeof INQUIRY_NATURES)[number];
 
 const fieldBase =
-  "w-full rounded-sm border border-[color:var(--avan-border-hairline)] bg-white px-4 py-3 font-sans text-body " +
-  "text-ftext caret-bronze-500 placeholder:text-[color:var(--avan-text-secondary)] transition-colors duration-fast " +
+  "w-full rounded-sm border border-(--avan-border-hairline) bg-white px-4 py-3 font-sans text-body " +
+  "text-ftext caret-bronze-500 placeholder:text-(--avan-text-secondary) transition-colors duration-fast " +
   "hover:border-bronze-500/60 " +
-  "focus-visible:outline-none focus-visible:border-bronze-600 focus-visible:ring-2 focus-visible:ring-bronze-600";
+  "focus-visible:outline-hidden focus-visible:border-bronze-600 focus-visible:ring-2 focus-visible:ring-bronze-600";
 
-const labelBase = "font-mono text-overline uppercase text-[color:var(--avan-text-eyebrow)]";
+const labelBase = "font-mono text-overline uppercase text-(--avan-text-eyebrow)";
 
 export function InquiryForm({
   copy,
@@ -37,6 +37,8 @@ export function InquiryForm({
   useEffect(() => {
     const param = new URLSearchParams(window.location.search).get("nature");
     if (param && (INQUIRY_NATURES as readonly string[]).includes(param)) {
+      // One-time sync from the URL (an external system) after hydration.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setNature(param as Nature);
     }
   }, []);
@@ -86,7 +88,7 @@ export function InquiryForm({
     return (
       <div
         role="status"
-        className="fade-rise flex min-h-[18rem] flex-col justify-center gap-6 border border-[color:var(--avan-border-hairline)] bg-cream-raised p-8"
+        className="fade-rise flex min-h-[18rem] flex-col justify-center gap-6 border border-(--avan-border-hairline) bg-cream-raised p-8"
       >
         <GemMark className="h-12 w-auto" aria-hidden="true" title="" />
         <p className="font-serif text-display-m italic">{copy.registers[nature].success}</p>
@@ -181,7 +183,7 @@ export function InquiryForm({
           aria-live="polite"
           className={cn(
             "fade-soft max-w-sm font-sans text-caption",
-            status === "error" ? "text-oxblood-700" : "text-[color:var(--avan-text-secondary)]",
+            status === "error" ? "text-oxblood-700" : "text-(--avan-text-secondary)",
           )}
         >
           {status === "error" ? micro.submitError : copy.registers[nature].reassurance}

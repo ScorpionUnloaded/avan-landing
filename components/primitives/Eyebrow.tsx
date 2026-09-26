@@ -18,7 +18,7 @@ export function Eyebrow({
   return (
     <Tag
       className={cn(
-        "inline-flex items-center gap-3 font-mono text-overline uppercase text-[color:var(--avan-text-eyebrow)]",
+        "inline-flex items-center gap-3 font-mono text-overline uppercase text-(--avan-text-eyebrow)",
         className,
       )}
     >

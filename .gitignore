@@ -3,7 +3,8 @@
 /out
 /build
 next-env.d.ts
-.env*.local
+.env*
+!.env.example
 .DS_Store
 *.tsbuildinfo
 
@@ -12,3 +13,13 @@ brand/private/
 
 # Showcase raw captures
 showcase/.raw/
+
+# Test output
+/test-results/
+/playwright-report/
+/blob-report/
+/.lighthouseci/
+/coverage/
+
+# Raw generated media (only the processed output is committed)
+/assets-src/raw/

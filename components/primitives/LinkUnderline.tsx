@@ -15,8 +15,8 @@ export function LinkUnderline({
       href={href}
       className={cn(
         "avan-underline font-sans transition-colors duration-fast ease-standard hover:text-bronze-600 " +
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze-600 focus-visible:ring-offset-2 " +
-          "focus-visible:ring-offset-[color:var(--avan-surface-base)]",
+          "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-bronze-600 focus-visible:ring-offset-2 " +
+          "focus-visible:ring-offset-(--avan-surface-base)",
         className,
       )}
       {...rest}

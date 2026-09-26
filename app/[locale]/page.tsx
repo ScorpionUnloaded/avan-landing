@@ -13,9 +13,9 @@ import { Colophon } from "@/sections/Colophon";
 import { getCopy } from "@/content";
 import { isLocale } from "@/lib/locale";
 
-export default function Page({ params }: { params: { locale: string } }) {
-  if (!isLocale(params.locale)) notFound();
-  const locale = params.locale;
+export default async function Page({ params }: PageProps<"/[locale]">) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
   const c = getCopy(locale);
 
   return (

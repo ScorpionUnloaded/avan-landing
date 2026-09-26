@@ -4,8 +4,11 @@ import { HouseDocument } from "@/components/composite/HouseDocument";
 import { getCopy } from "@/content";
 import { isLocale, type Locale } from "@/lib/locale";
 
-export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
-  const locale: Locale = isLocale(params.locale) ? params.locale : "en";
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/legal">): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale: Locale = isLocale(raw) ? raw : "en";
   const m = getCopy(locale).legal.meta;
   return {
     title: m.title,
@@ -17,8 +20,9 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
   };
 }
 
-export default function LegalPage({ params }: { params: { locale: string } }) {
-  if (!isLocale(params.locale)) notFound();
-  const c = getCopy(params.locale);
-  return <HouseDocument copy={c} doc={c.legal} locale={params.locale} currentPath="/legal" />;
+export default async function LegalPage({ params }: PageProps<"/[locale]/legal">) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const c = getCopy(locale);
+  return <HouseDocument copy={c} doc={c.legal} locale={locale} currentPath="/legal" />;
 }
