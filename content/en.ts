@@ -293,7 +293,7 @@ export const en = {
   },
 
   legal: {
-    meta: { title: "Legal notice", description: "Legal notice — AVAN Group." },
+    meta: { title: "Legal notice", description: "Legal notice for AVAN Group, a patrimonial house, and its institutional arm PFI · Pro-Finance: publisher, host and terms of use of this site." },
     title: "Legal notice",
     updated: "Maintained by the house · July 2026",
     sections: [
@@ -313,7 +313,7 @@ export const en = {
   },
 
   privacy: {
-    meta: { title: "Privacy", description: "Privacy — AVAN Group." },
+    meta: { title: "Privacy", description: "How AVAN Group handles the personal data you share through this site: what is collected, why, for how long, and your rights under the GDPR." },
     title: "Privacy",
     updated: "Maintained by the house · July 2026",
     sections: [

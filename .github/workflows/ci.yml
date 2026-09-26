@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main, "claude/**"]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint · types · tests · build · e2e · a11y · Lighthouse
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Same Playwright build as local development (1.56.1 ↔ Chromium 1194), so
+    # browser behaviour and screenshots match across machines.
+    container: mcr.microsoft.com/playwright:v1.56.1-noble
+    env:
+      HOME: /root
+      CI: "true"
+      NEXT_TELEMETRY_DISABLED: "1"
+      NEXT_PUBLIC_SITE_URL: https://avan-landing.vercel.app
+      CHROME_PATH: /ms-playwright/chromium-1194/chrome-linux/chrome
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: E2E, accessibility and budgets (Chromium, Firefox, WebKit)
+        run: npx playwright test
+
+      - name: Lighthouse (mobile)
+        run: npx lhci autorun
+
+      - name: Upload reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: |
+            playwright-report/
+            .lighthouseci/
+          retention-days: 14

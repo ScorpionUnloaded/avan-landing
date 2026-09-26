@@ -293,7 +293,7 @@ export const fr: Copy = {
   },
 
   legal: {
-    meta: { title: "Mentions légales", description: "Mentions légales — AVAN Group." },
+    meta: { title: "Mentions légales", description: "Mentions légales d’AVAN Group, maison patrimoniale, et de son pôle institutionnel PFI · Pro-Finance : éditeur, hébergeur et conditions d’utilisation du site." },
     title: "Mentions légales",
     updated: "Tenu par la maison · Juillet 2026",
     sections: [
@@ -313,7 +313,7 @@ export const fr: Copy = {
   },
 
   privacy: {
-    meta: { title: "Confidentialité", description: "Confidentialité — AVAN Group." },
+    meta: { title: "Confidentialité", description: "Comment AVAN Group traite les données personnelles transmises par ce site : ce qui est collecté, pourquoi, pour combien de temps, et vos droits au titre du RGPD." },
     title: "Confidentialité",
     updated: "Tenu par la maison · Juillet 2026",
     sections: [
