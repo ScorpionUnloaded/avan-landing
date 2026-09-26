@@ -1,0 +1,287 @@
+{
+  "$description": "AVAN GROUP \u00b7 A2.3 Spacing & Layout \u00b7 Global + Semantic + Component tiers (W3C DTCG)",
+  "space": {
+    "0": {
+      "$value": "0rem",
+      "$type": "dimension"
+    },
+    "0_5": {
+      "$value": "0.125rem",
+      "$type": "dimension"
+    },
+    "1": {
+      "$value": "0.25rem",
+      "$type": "dimension"
+    },
+    "2": {
+      "$value": "0.5rem",
+      "$type": "dimension"
+    },
+    "3": {
+      "$value": "0.75rem",
+      "$type": "dimension"
+    },
+    "4": {
+      "$value": "1rem",
+      "$type": "dimension"
+    },
+    "5": {
+      "$value": "1.25rem",
+      "$type": "dimension"
+    },
+    "6": {
+      "$value": "1.5rem",
+      "$type": "dimension"
+    },
+    "8": {
+      "$value": "2rem",
+      "$type": "dimension"
+    },
+    "10": {
+      "$value": "2.5rem",
+      "$type": "dimension"
+    },
+    "12": {
+      "$value": "3rem",
+      "$type": "dimension"
+    },
+    "16": {
+      "$value": "4rem",
+      "$type": "dimension"
+    },
+    "20": {
+      "$value": "5rem",
+      "$type": "dimension"
+    },
+    "24": {
+      "$value": "6rem",
+      "$type": "dimension"
+    },
+    "32": {
+      "$value": "8rem",
+      "$type": "dimension"
+    },
+    "40": {
+      "$value": "10rem",
+      "$type": "dimension"
+    },
+    "48": {
+      "$value": "12rem",
+      "$type": "dimension"
+    },
+    "64": {
+      "$value": "16rem",
+      "$type": "dimension"
+    },
+    "80": {
+      "$value": "20rem",
+      "$type": "dimension"
+    },
+    "96": {
+      "$value": "24rem",
+      "$type": "dimension"
+    }
+  },
+  "radius": {
+    "none": {
+      "$value": "0px",
+      "$type": "dimension"
+    },
+    "sm": {
+      "$value": "2px",
+      "$type": "dimension"
+    },
+    "md": {
+      "$value": "3px",
+      "$type": "dimension"
+    },
+    "lg": {
+      "$value": "4px",
+      "$type": "dimension"
+    },
+    "xl": {
+      "$value": "6px",
+      "$type": "dimension"
+    },
+    "2xl": {
+      "$value": "8px",
+      "$type": "dimension"
+    },
+    "3xl": {
+      "$value": "12px",
+      "$type": "dimension"
+    },
+    "full": {
+      "$value": "9999px",
+      "$type": "dimension"
+    }
+  },
+  "shadow": {
+    "1": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0",
+          "color": "rgba(20,30,45,0.06)"
+        }
+      ]
+    },
+    "2": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0",
+          "color": "rgba(20,30,45,0.05)"
+        },
+        {
+          "offsetX": "0",
+          "offsetY": "2px",
+          "blur": "4px",
+          "spread": "0",
+          "color": "rgba(20,30,45,0.07)"
+        }
+      ]
+    },
+    "3": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0",
+          "color": "rgba(20,30,45,0.05)"
+        },
+        {
+          "offsetX": "0",
+          "offsetY": "4px",
+          "blur": "12px",
+          "spread": "-1px",
+          "color": "rgba(20,30,45,0.09)"
+        }
+      ]
+    },
+    "4": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0",
+          "offsetY": "2px",
+          "blur": "4px",
+          "spread": "0",
+          "color": "rgba(20,30,45,0.05)"
+        },
+        {
+          "offsetX": "0",
+          "offsetY": "8px",
+          "blur": "24px",
+          "spread": "-2px",
+          "color": "rgba(20,30,45,0.11)"
+        }
+      ]
+    },
+    "5": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0",
+          "offsetY": "4px",
+          "blur": "8px",
+          "spread": "0",
+          "color": "rgba(20,30,45,0.05)"
+        },
+        {
+          "offsetX": "0",
+          "offsetY": "16px",
+          "blur": "48px",
+          "spread": "-4px",
+          "color": "rgba(20,30,45,0.15)"
+        }
+      ]
+    },
+    "0": {
+      "$type": "shadow",
+      "$value": "none"
+    }
+  },
+  "breakpoint": {
+    "sm": {
+      "$value": "640px",
+      "$type": "dimension"
+    },
+    "md": {
+      "$value": "768px",
+      "$type": "dimension"
+    },
+    "lg": {
+      "$value": "1024px",
+      "$type": "dimension"
+    },
+    "xl": {
+      "$value": "1280px",
+      "$type": "dimension"
+    },
+    "2xl": {
+      "$value": "1536px",
+      "$type": "dimension"
+    }
+  },
+  "semantic": {
+    "container-md": {
+      "$value": "720px",
+      "$type": "dimension"
+    },
+    "container-lg": {
+      "$value": "960px",
+      "$type": "dimension"
+    },
+    "container-xl": {
+      "$value": "1060px",
+      "$type": "dimension"
+    },
+    "container-2xl": {
+      "$value": "1200px",
+      "$type": "dimension"
+    },
+    "grid-columns": {
+      "$value": 12,
+      "$type": "number"
+    },
+    "gutter-base": {
+      "$value": "{space.6}",
+      "$type": "dimension"
+    },
+    "margin-base": {
+      "$value": "{space.10}",
+      "$type": "dimension"
+    },
+    "section-gap": {
+      "$value": "{space.16}",
+      "$type": "dimension"
+    }
+  },
+  "component": {
+    "touch-target-min": {
+      "$value": "44px",
+      "$type": "dimension"
+    },
+    "safe-top": {
+      "$value": "env(safe-area-inset-top)",
+      "$type": "dimension"
+    },
+    "safe-bottom": {
+      "$value": "max(env(safe-area-inset-bottom), {space.4})",
+      "$type": "dimension"
+    },
+    "safe-x": {
+      "$value": "env(safe-area-inset-left)",
+      "$type": "dimension"
+    }
+  }
+}

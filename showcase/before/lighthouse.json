@@ -1,0 +1,50 @@
+[
+  {
+    "formFactor": "mobile",
+    "path": "/",
+    "performance": 91,
+    "accessibility": 100,
+    "bestPractices": 96,
+    "seo": 100,
+    "lcpMs": 3498,
+    "cls": 0,
+    "tbtMs": 34,
+    "totalKB": 1241
+  },
+  {
+    "formFactor": "mobile",
+    "path": "/fr",
+    "performance": 91,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcpMs": 3548,
+    "cls": 0,
+    "tbtMs": 30,
+    "totalKB": 1239
+  },
+  {
+    "formFactor": "desktop",
+    "path": "/",
+    "performance": 100,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcpMs": 744,
+    "cls": 0,
+    "tbtMs": 0,
+    "totalKB": 1300
+  },
+  {
+    "formFactor": "desktop",
+    "path": "/fr",
+    "performance": 100,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcpMs": 729,
+    "cls": 0,
+    "tbtMs": 0,
+    "totalKB": 1300
+  }
+]

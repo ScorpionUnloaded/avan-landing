@@ -1,0 +1,284 @@
+{
+  "label": "before",
+  "base": "http://localhost:3100",
+  "capturedAt": "2026-09-26T20:12:12.447Z",
+  "pages": [
+    {
+      "viewport": "desktop",
+      "route": "home",
+      "path": "/",
+      "status": 200,
+      "failedRequests": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "route": "pfi",
+      "path": "/pfi",
+      "status": 200,
+      "failedRequests": [
+        {
+          "status": 404,
+          "url": "/brand/crest-lion.webp"
+        },
+        {
+          "status": 404,
+          "url": "/brand/crest-stag.webp"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 5
+        }
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "route": "legal",
+      "path": "/legal",
+      "status": 200,
+      "failedRequests": [],
+      "consoleErrors": [],
+      "axe": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "privacy",
+      "path": "/privacy",
+      "status": 200,
+      "failedRequests": [],
+      "consoleErrors": [],
+      "axe": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "home-fr",
+      "path": "/fr",
+      "status": 200,
+      "failedRequests": [],
+      "consoleErrors": [],
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "route": "pfi-fr",
+      "path": "/fr/pfi",
+      "status": 200,
+      "failedRequests": [
+        {
+          "status": 404,
+          "url": "/brand/crest-lion.webp"
+        },
+        {
+          "status": 404,
+          "url": "/brand/crest-stag.webp"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 5
+        }
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "route": "legal-fr",
+      "path": "/fr/legal",
+      "status": 200,
+      "failedRequests": [],
+      "consoleErrors": [],
+      "axe": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "privacy-fr",
+      "path": "/fr/privacy",
+      "status": 200,
+      "failedRequests": [],
+      "consoleErrors": [],
+      "axe": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "404",
+      "path": "/this-door-does-not-open",
+      "status": 404,
+      "failedRequests": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "axe": [
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "nodes": 1
+        }
+      ]
+    },
+    {
+      "viewport": "mobile",
+      "route": "home",
+      "path": "/",
+      "status": 200,
+      "failedRequests": [],
+      "consoleErrors": [],
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "viewport": "mobile",
+      "route": "pfi",
+      "path": "/pfi",
+      "status": 200,
+      "failedRequests": [
+        {
+          "status": 404,
+          "url": "/brand/crest-lion.webp"
+        },
+        {
+          "status": 404,
+          "url": "/brand/crest-stag.webp"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "viewport": "mobile",
+      "route": "legal",
+      "path": "/legal",
+      "status": 200,
+      "failedRequests": [],
+      "consoleErrors": [],
+      "axe": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "privacy",
+      "path": "/privacy",
+      "status": 200,
+      "failedRequests": [],
+      "consoleErrors": [],
+      "axe": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "home-fr",
+      "path": "/fr",
+      "status": 200,
+      "failedRequests": [],
+      "consoleErrors": [],
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "viewport": "mobile",
+      "route": "pfi-fr",
+      "path": "/fr/pfi",
+      "status": 200,
+      "failedRequests": [
+        {
+          "status": 404,
+          "url": "/brand/crest-lion.webp"
+        },
+        {
+          "status": 404,
+          "url": "/brand/crest-stag.webp"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "viewport": "mobile",
+      "route": "legal-fr",
+      "path": "/fr/legal",
+      "status": 200,
+      "failedRequests": [],
+      "consoleErrors": [],
+      "axe": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "privacy-fr",
+      "path": "/fr/privacy",
+      "status": 200,
+      "failedRequests": [],
+      "consoleErrors": [],
+      "axe": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "404",
+      "path": "/this-door-does-not-open",
+      "status": 404,
+      "failedRequests": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "axe": [
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "nodes": 1
+        }
+      ]
+    }
+  ],
+  "warnings": []
+}

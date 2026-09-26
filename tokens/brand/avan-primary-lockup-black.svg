@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 1180" width="700" height="1180">
+  <title>AVAN Group — Primary Stacked Lockup (Black)</title>
+  <desc>Master vector lockup: gem mark + AVAN wordmark + divider + GROUP submark. Built from validated gem geometry, spaced per brand board clearspace rules (X = height of letter "A" in AVAN).</desc>
+
+  <defs>
+    <style>
+      .wordmark { font-family: "Cormorant Garamond", "EB Garamond", Georgia, serif; }
+      .submark  { font-family: "Suisse Int'l", "Helvetica Neue", Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- ===================== GEM MARK ===================== -->
+  <!-- Original mark occupies x:[119.5,580.5] y:[40,460] in this 700-wide canvas (scaled 1.0x, offset +119.5,+0) -->
+  <g id="avan-gem-mark" transform="translate(119.5,0)" fill="none" stroke="#0A0E14" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="230.5" y1="40.0"  x2="400.4" y2="239.3"/>
+    <line x1="230.5" y1="40.0"  x2="60.6"  y2="239.3"/>
+    <line x1="230.5" y1="40.0"  x2="329.0" y2="273.8"/>
+    <line x1="230.5" y1="40.0"  x2="132.0" y2="273.8"/>
+    <line x1="230.5" y1="40.0"  x2="230.5" y2="340.3"/>
+    <line x1="400.4" y1="239.3" x2="329.0" y2="273.8"/>
+    <line x1="400.4" y1="239.3" x2="420.4" y2="483.2"/>
+    <line x1="60.6"  y1="239.3" x2="132.0" y2="273.8"/>
+    <line x1="60.6"  y1="239.3" x2="40.6"  y2="483.2"/>
+    <line x1="329.0" y1="273.8" x2="230.5" y2="340.3"/>
+    <line x1="132.0" y1="273.8" x2="230.5" y2="340.3"/>
+    <line x1="329.0" y1="273.8" x2="420.4" y2="483.2"/>
+    <line x1="132.0" y1="273.8" x2="40.6"  y2="483.2"/>
+    <line x1="230.5" y1="340.3" x2="40.6"  y2="483.2"/>
+    <line x1="230.5" y1="340.3" x2="420.4" y2="483.2"/>
+    <line x1="230.5" y1="340.3" x2="353.0" y2="669.7"/>
+    <line x1="230.5" y1="340.3" x2="108.1" y2="669.7"/>
+    <line x1="230.5" y1="340.3" x2="230.5" y2="746.0"/>
+    <line x1="40.6"  y1="483.2" x2="12.0"  y2="685.0"/>
+    <line x1="420.4" y1="483.2" x2="449.0" y2="685.0"/>
+    <line x1="449.0" y1="685.0" x2="353.0" y2="669.7"/>
+    <line x1="353.0" y1="669.7" x2="230.5" y2="746.0"/>
+    <line x1="353.0" y1="669.7" x2="230.5" y2="960.0"/>
+    <line x1="12.0"  y1="685.0" x2="108.1" y2="669.7"/>
+    <line x1="108.1" y1="669.7" x2="230.5" y2="746.0"/>
+    <line x1="108.1" y1="669.7" x2="230.5" y2="960.0"/>
+    <line x1="12.0"  y1="685.0" x2="230.5" y2="960.0"/>
+    <line x1="449.0" y1="685.0" x2="230.5" y2="960.0"/>
+    <line x1="230.5" y1="746.0" x2="230.5" y2="960.0"/>
+  </g>
+
+  <!-- ===================== AVAN WORDMARK ===================== -->
+  <text x="350" y="1040" class="wordmark" font-size="92" font-weight="500" letter-spacing="14"
+        text-anchor="middle" fill="#0A0E14">AVAN</text>
+
+  <!-- ===================== DIVIDER ===================== -->
+  <line x1="290" y1="1075" x2="410" y2="1075" stroke="#0A0E14" stroke-width="3"/>
+
+  <!-- ===================== GROUP SUBMARK ===================== -->
+  <text x="350" y="1120" class="submark" font-size="34" font-weight="400" letter-spacing="10"
+        text-anchor="middle" fill="#0A0E14">GROUP</text>
+
+</svg>

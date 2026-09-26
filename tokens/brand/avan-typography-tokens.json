@@ -1,0 +1,303 @@
+{
+  "$description": "AVAN GROUP \u00b7 A2.2 Typography System \u00b7 Global + Semantic + Component tiers (W3C DTCG)",
+  "font": {
+    "family": {
+      "display": {
+        "$value": "'Cormorant Garamond', Georgia, 'Times New Roman', serif",
+        "$type": "fontFamily"
+      },
+      "text": {
+        "$value": "\"Suisse Int'l\", 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        "$type": "fontFamily",
+        "$description": "Fixed 2026-06-24 audit: source previously read 'Suisse Int'l' (single-quoted), which is invalid CSS — the embedded apostrophe closes the string early. Now double-quoted per CSS font-family syntax for names containing an apostrophe."
+      },
+      "mono": {
+        "$value": "\"Suisse Int'l Mono\", 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace",
+        "$type": "fontFamily",
+        "$description": "Fixed 2026-06-24 audit: same single-quote escaping issue as font.family.text."
+      }
+    },
+    "weight": {
+      "light": {
+        "$value": 300,
+        "$type": "fontWeight"
+      },
+      "regular": {
+        "$value": 400,
+        "$type": "fontWeight"
+      },
+      "medium": {
+        "$value": 500,
+        "$type": "fontWeight"
+      },
+      "semibold": {
+        "$value": 600,
+        "$type": "fontWeight"
+      },
+      "bold": {
+        "$value": 700,
+        "$type": "fontWeight"
+      }
+    },
+    "size": {
+      "xs": {
+        "$value": "0.75rem",
+        "$type": "dimension"
+      },
+      "sm": {
+        "$value": "0.875rem",
+        "$type": "dimension"
+      },
+      "base": {
+        "$value": "1rem",
+        "$type": "dimension"
+      },
+      "lg": {
+        "$value": "1.125rem",
+        "$type": "dimension"
+      },
+      "xl": {
+        "$value": "1.25rem",
+        "$type": "dimension"
+      },
+      "2xl": {
+        "$value": "1.5rem",
+        "$type": "dimension"
+      },
+      "3xl": {
+        "$value": "1.875rem",
+        "$type": "dimension"
+      },
+      "4xl": {
+        "$value": "2.25rem",
+        "$type": "dimension"
+      },
+      "5xl": {
+        "$value": "3rem",
+        "$type": "dimension"
+      },
+      "6xl": {
+        "$value": "3.75rem",
+        "$type": "dimension"
+      },
+      "7xl": {
+        "$value": "4.5rem",
+        "$type": "dimension"
+      },
+      "8xl": {
+        "$value": "6rem",
+        "$type": "dimension"
+      },
+      "9xl": {
+        "$value": "8rem",
+        "$type": "dimension"
+      }
+    },
+    "lineHeight": {
+      "xs": {
+        "$value": 1.5,
+        "$type": "number"
+      },
+      "sm": {
+        "$value": 1.55,
+        "$type": "number"
+      },
+      "base": {
+        "$value": 1.62,
+        "$type": "number"
+      },
+      "lg": {
+        "$value": 1.55,
+        "$type": "number"
+      },
+      "xl": {
+        "$value": 1.45,
+        "$type": "number"
+      },
+      "2xl": {
+        "$value": 1.3,
+        "$type": "number"
+      },
+      "3xl": {
+        "$value": 1.2,
+        "$type": "number"
+      },
+      "4xl": {
+        "$value": 1.12,
+        "$type": "number"
+      },
+      "5xl": {
+        "$value": 1.06,
+        "$type": "number"
+      },
+      "6xl": {
+        "$value": 1.02,
+        "$type": "number"
+      },
+      "7xl": {
+        "$value": 1.0,
+        "$type": "number"
+      },
+      "8xl": {
+        "$value": 0.98,
+        "$type": "number"
+      },
+      "9xl": {
+        "$value": 0.96,
+        "$type": "number"
+      }
+    },
+    "letterSpacing": {
+      "xs": {
+        "$value": "0.01em",
+        "$type": "dimension"
+      },
+      "sm": {
+        "$value": "0.005em",
+        "$type": "dimension"
+      },
+      "base": {
+        "$value": "0",
+        "$type": "dimension"
+      },
+      "lg": {
+        "$value": "0",
+        "$type": "dimension"
+      },
+      "xl": {
+        "$value": "0",
+        "$type": "dimension"
+      },
+      "2xl": {
+        "$value": "0.005em",
+        "$type": "dimension"
+      },
+      "3xl": {
+        "$value": "0.005em",
+        "$type": "dimension"
+      },
+      "4xl": {
+        "$value": "0.005em",
+        "$type": "dimension"
+      },
+      "5xl": {
+        "$value": "0.005em",
+        "$type": "dimension"
+      },
+      "6xl": {
+        "$value": "0.006em",
+        "$type": "dimension"
+      },
+      "7xl": {
+        "$value": "0.008em",
+        "$type": "dimension"
+      },
+      "8xl": {
+        "$value": "0.01em",
+        "$type": "dimension"
+      },
+      "9xl": {
+        "$value": "0.012em",
+        "$type": "dimension"
+      }
+    }
+  },
+  "semantic": {
+    "heading-1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontWeight": "{font.weight.medium}",
+        "fontSize": "{font.size.7xl}",
+        "lineHeight": "{font.lineHeight.7xl}",
+        "letterSpacing": "0.005em",
+        "color": "#141E2D"
+      }
+    },
+    "heading-2": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontWeight": "{font.weight.medium}",
+        "fontSize": "{font.size.4xl}",
+        "lineHeight": "{font.lineHeight.4xl}",
+        "color": "#141E2D"
+      }
+    },
+    "heading-3": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontWeight": "{font.weight.medium}",
+        "fontSize": "{font.size.2xl}",
+        "lineHeight": "{font.lineHeight.2xl}",
+        "color": "#141E2D"
+      }
+    },
+    "lede": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontWeight": "{font.weight.regular}",
+        "fontSize": "{font.size.xl}",
+        "lineHeight": "1.4",
+        "color": "#141E2D"
+      }
+    },
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontWeight": "{font.weight.regular}",
+        "fontSize": "{font.size.base}",
+        "lineHeight": "{font.lineHeight.base}",
+        "color": "#2A2E35"
+      }
+    },
+    "caption": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontWeight": "{font.weight.regular}",
+        "fontSize": "{font.size.sm}",
+        "lineHeight": "1.5",
+        "color": "#5C6470"
+      }
+    },
+    "overline": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontWeight": "{font.weight.medium}",
+        "fontSize": "{font.size.xs}",
+        "lineHeight": "1",
+        "letterSpacing": "0.32em",
+        "textTransform": "uppercase",
+        "color": "#8A6E45"
+      }
+    },
+    "button": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontWeight": "{font.weight.medium}",
+        "fontSize": "{font.size.sm}",
+        "lineHeight": "1",
+        "letterSpacing": "0.06em",
+        "color": "#F4F1EA"
+      }
+    },
+    "label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontWeight": "{font.weight.semibold}",
+        "fontSize": "{font.size.xs}",
+        "lineHeight": "1",
+        "letterSpacing": "0.14em",
+        "textTransform": "uppercase",
+        "color": "#141E2D"
+      }
+    }
+  }
+}

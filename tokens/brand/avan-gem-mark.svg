@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 461 1000" width="461" height="1000">
+  <title>AVAN Group — Primary Symbol Mark (Gem)</title>
+  <desc>Reconstructed master vector. 14 vertices, bilaterally symmetric, validated against source artwork.</desc>
+  <g id="avan-gem-mark" fill="none" stroke="#C5A572" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Apex to upper shoulders and inner hub -->
+    <line x1="230.5" y1="40.0"  x2="400.4" y2="239.3"/>
+    <line x1="230.5" y1="40.0"  x2="60.6"  y2="239.3"/>
+    <line x1="230.5" y1="40.0"  x2="329.0" y2="273.8"/>
+    <line x1="230.5" y1="40.0"  x2="132.0" y2="273.8"/>
+    <line x1="230.5" y1="40.0"  x2="230.5" y2="340.3"/>
+
+    <!-- Upper shoulder ring -->
+    <line x1="400.4" y1="239.3" x2="329.0" y2="273.8"/>
+    <line x1="400.4" y1="239.3" x2="420.4" y2="483.2"/>
+    <line x1="60.6"  y1="239.3" x2="132.0" y2="273.8"/>
+    <line x1="60.6"  y1="239.3" x2="40.6"  y2="483.2"/>
+
+    <!-- Shoulders to hub -->
+    <line x1="329.0" y1="273.8" x2="230.5" y2="340.3"/>
+    <line x1="132.0" y1="273.8" x2="230.5" y2="340.3"/>
+
+    <!-- Mid band: shoulders to mid corners -->
+    <line x1="329.0" y1="273.8" x2="420.4" y2="483.2"/>
+    <line x1="132.0" y1="273.8" x2="40.6"  y2="483.2"/>
+
+    <!-- Hub to mid corners and lower body -->
+    <line x1="230.5" y1="340.3" x2="40.6"  y2="483.2"/>
+    <line x1="230.5" y1="340.3" x2="420.4" y2="483.2"/>
+    <line x1="230.5" y1="340.3" x2="353.0" y2="669.7"/>
+    <line x1="230.5" y1="340.3" x2="108.1" y2="669.7"/>
+    <line x1="230.5" y1="340.3" x2="230.5" y2="746.0"/>
+
+    <!-- Mid corners to outer lower points -->
+    <line x1="40.6"  y1="483.2" x2="12.0"  y2="685.0"/>
+    <line x1="420.4" y1="483.2" x2="449.0" y2="685.0"/>
+
+    <!-- Lower body ring -->
+    <line x1="449.0" y1="685.0" x2="353.0" y2="669.7"/>
+    <line x1="353.0" y1="669.7" x2="230.5" y2="746.0"/>
+    <line x1="353.0" y1="669.7" x2="230.5" y2="960.0"/>
+    <line x1="12.0"  y1="685.0" x2="108.1" y2="669.7"/>
+    <line x1="108.1" y1="669.7" x2="230.5" y2="746.0"/>
+    <line x1="108.1" y1="669.7" x2="230.5" y2="960.0"/>
+
+    <!-- Base apex -->
+    <line x1="12.0"  y1="685.0" x2="230.5" y2="960.0"/>
+    <line x1="449.0" y1="685.0" x2="230.5" y2="960.0"/>
+    <line x1="230.5" y1="746.0" x2="230.5" y2="960.0"/>
+  </g>
+</svg>

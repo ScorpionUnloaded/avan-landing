@@ -1,0 +1,108 @@
+{
+  "$description": "AVAN GROUP \u00b7 A2.4 Iconography & Imagery \u00b7 icon sizing, states, stroke",
+  "icon": {
+    "stroke": {
+      "base": {
+        "$value": "1.5px",
+        "$type": "dimension"
+      },
+      "feature": {
+        "$value": "1.75px",
+        "$type": "dimension"
+      },
+      "hero": {
+        "$value": "2px",
+        "$type": "dimension"
+      }
+    },
+    "size": {
+      "inline": {
+        "$value": "16px",
+        "$type": "dimension"
+      },
+      "button": {
+        "$value": "20px",
+        "$type": "dimension"
+      },
+      "default": {
+        "$value": "24px",
+        "$type": "dimension"
+      },
+      "feature": {
+        "$value": "32px",
+        "$type": "dimension"
+      },
+      "hero": {
+        "$value": "48px",
+        "$type": "dimension"
+      }
+    },
+    "grid": {
+      "$value": "24px",
+      "$type": "dimension"
+    },
+    "live-area": {
+      "$value": "20px",
+      "$type": "dimension"
+    },
+    "color": {
+      "default": {
+        "$value": "{semantic.light.text-secondary}",
+        "$type": "color"
+      },
+      "hover": {
+        "$value": "{semantic.light.text-primary}",
+        "$type": "color"
+      },
+      "active": {
+        "$value": "{alias.brand-secondary}",
+        "$type": "color"
+      },
+      "disabled": {
+        "$value": "{color.neutral.300}",
+        "$type": "color"
+      },
+      "error": {
+        "$value": "{semantic.light.state-error}",
+        "$type": "color"
+      }
+    }
+  },
+  "logo": {
+    "clear-space": {
+      "$value": "1x gem height",
+      "$type": "other"
+    },
+    "min-size-horizontal": {
+      "$value": "120px",
+      "$type": "dimension"
+    },
+    "min-size-icon": {
+      "$value": "24px",
+      "$type": "dimension"
+    }
+  },
+  "image": {
+    "crop": {
+      "square": {
+        "$value": "1:1"
+      },
+      "portrait": {
+        "$value": "4:5"
+      },
+      "landscape": {
+        "$value": "3:2"
+      },
+      "hero": {
+        "$value": "16:9"
+      },
+      "cinematic": {
+        "$value": "21:9"
+      }
+    },
+    "scrim": {
+      "$value": "linear-gradient(to top, rgba(14,23,34,.72), transparent 60%)",
+      "$type": "other"
+    }
+  }
+}

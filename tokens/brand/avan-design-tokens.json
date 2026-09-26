@@ -1,0 +1,69 @@
+{
+  "$description": "AVAN Group — Design Tokens v1.1. RECONCILED 2026-07-01: colors realigned to the DTCG suite (avan-color-tokens.json) as the single source of truth; Pantone references removed. Each color carries its canonical DTCG token path.",
+
+  "color": {
+    "navy":      { "value": "#141E2D", "rgb": "20, 30, 45",    "token": "color.ink.900",     "usage": "primary text, primary lockup on light backgrounds" },
+    "gold":      { "value": "#C5A572", "rgb": "197, 165, 114", "token": "color.bronze.400",  "usage": "gem mark, dividers, accents" },
+    "lightGray": { "value": "#D6D8DC", "rgb": "214, 216, 220", "token": "color.neutral.200", "usage": "backgrounds, subtle fills, hairlines" },
+    "white":     { "value": "#FFFFFF", "rgb": "255, 255, 255", "token": "color.base.white",  "usage": "reverse/dark-background lockups" },
+    "black":     { "value": "#0A0E14", "rgb": "10, 14, 20",    "token": "color.base.black",  "usage": "symbol-only mark, black variant (near-black; pure #000000 not used)" }
+  },
+
+  "typography": {
+    "fontFamily": {
+      "serif": { "value": "'Cormorant Garamond', 'EB Garamond', Georgia, serif", "usage": "AVAN wordmark, PFI wordmark, primary headlines" },
+      "sans":  { "value": "'Suisse Int'l', 'Helvetica Neue', Arial, sans-serif", "usage": "GROUP submark, service line, body copy, small caps labels" }
+    },
+    "wordmark": {
+      "avan":  { "fontSize": "92px", "fontWeight": 500, "letterSpacing": "0.15em", "transform": "uppercase" },
+      "group": { "fontSize": "34px", "fontWeight": 400, "letterSpacing": "0.3em",  "transform": "uppercase" },
+      "pfi":   { "fontSize": "64px", "fontWeight": 600, "letterSpacing": "0.05em", "transform": "uppercase" },
+      "proFinance": { "fontSize": "40px", "fontWeight": 400, "letterSpacing": "0.2em", "transform": "uppercase" },
+      "serviceLine": { "fontSize": "16px", "fontWeight": 500, "letterSpacing": "0.1em", "transform": "uppercase" }
+    }
+  },
+
+  "spacing": {
+    "clearspaceUnit": { "value": "1x", "definition": "Height of the capital letter 'A' in the AVAN wordmark. All clearspace around any lockup = 1x on every side, per brand board 2.9." },
+    "dividerWeight": { "value": "3px" },
+    "minWidth": {
+      "stackedLockupPrint":   { "value": "20mm" },
+      "stackedLockupDigital": { "value": "120px" },
+      "pfiVerticalPrint":     { "value": "20mm" },
+      "pfiHorizontalPrint":   { "value": "25mm" }
+    }
+  },
+
+  "logo": {
+    "gemMark": {
+      "viewBox": "0 0 461 1000",
+      "strokeWidth": "6",
+      "strokeColor": "{color.gold.value}",
+      "vertexCount": 14,
+      "edgeCount": 29,
+      "symmetry": "bilateral, vertical axis at x=230.5",
+      "variants": ["gold", "black", "white"]
+    },
+    "primaryLockup": {
+      "viewBox": "0 0 700 1180",
+      "orientation": ["stacked", "horizontal"],
+      "variants": ["gold-on-light", "black-on-light", "white-on-dark"]
+    },
+    "pfiShieldMark": {
+      "viewBox": "0 0 246 180",
+      "fill": "{color.navy.value}",
+      "borderStroke": "{color.white.value}",
+      "reconstructionMethod": "contour-detected silhouette, symmetry-enforced, smoothed via Catmull-Rom splines",
+      "variants": ["navy", "gold", "white"]
+    }
+  },
+
+  "doNotRules": [
+    "Do not stretch or distort the proportions",
+    "Do not change the documented colors",
+    "Do not remove the clearspace margin",
+    "Do not rotate the mark",
+    "Do not add drop shadows, gradients, or other effects",
+    "Do not redraw the gem mark — always reference the master SVG"
+  ]
+}

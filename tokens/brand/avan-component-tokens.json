@@ -1,0 +1,180 @@
+{
+  "$description": "AVAN GROUP · A4.1 Core Components (Atoms) · Component tier (W3C DTCG format). Resolves the [variant]-[state] placeholders from the A4 matrix into concrete entries. Color values reference avan-color-tokens.json; focus/opacity/motion reference avan-state-tokens.json; radius/space/shadow reference avan-spacing-tokens.json; font.size references avan-typography-tokens.json. Component dimensions carry their scale lineage in $description where the global step is not exact.",
+  "button": {
+    "primary": {
+      "bg":        { "$value": "{semantic.light.action-primary-bg}", "$type": "color", "$description": "= {color.ink.900} #141E2D" },
+      "text":      { "$value": "{color.base.cream}", "$type": "color" },
+      "border":    { "$value": "{color.ink.900}", "$type": "color" },
+      "hover-bg":  { "$value": "{color.ink.800}", "$type": "color", "$description": "#2B3B57 — canonical. NB: A4 HTML hardcodes #1B2840; that raw value is a token-leakage defect, fix to this." },
+      "active-bg": { "$value": "{color.ink.950}", "$type": "color", "$description": "#0E1722, shadow turns inset" }
+    },
+    "secondary": {
+      "bg":        { "$value": "transparent", "$type": "color" },
+      "text":      { "$value": "{color.ink.900}", "$type": "color" },
+      "border":    { "$value": "{color.ink.900}", "$type": "color" },
+      "hover-bg":  { "$value": "rgba(20,30,45,0.06)", "$type": "color", "$description": "ink.900 at 6% — no global alias; overlay only" },
+      "active-bg": { "$value": "rgba(20,30,45,0.10)", "$type": "color" }
+    },
+    "tertiary": {
+      "bg":        { "$value": "{color.bronze.100}", "$type": "color", "$description": "#F3EADC" },
+      "text":      { "$value": "{color.bronze.600}", "$type": "color", "$description": "#8A6E45 (bronze-deep)" },
+      "border":    { "$value": "transparent", "$type": "color" },
+      "hover-bg":  { "$value": "{color.bronze.300}", "$type": "color" },
+      "active-bg": { "$value": "{color.bronze.400}", "$type": "color" }
+    },
+    "ghost": {
+      "bg":        { "$value": "transparent", "$type": "color" },
+      "text":      { "$value": "{color.ink.900}", "$type": "color" },
+      "border":    { "$value": "transparent", "$type": "color" },
+      "hover-bg":  { "$value": "rgba(138,110,69,0.12)", "$type": "color", "$description": "bronze.600 at 12%" },
+      "active-bg": { "$value": "rgba(138,110,69,0.20)", "$type": "color" }
+    },
+    "danger": {
+      "bg":        { "$value": "{color.oxblood.700}", "$type": "color", "$description": "#8A4B3C — destructive only" },
+      "text":      { "$value": "{color.base.white}", "$type": "color" },
+      "border":    { "$value": "{color.oxblood.700}", "$type": "color" },
+      "hover-bg":  { "$value": "{color.oxblood.800}", "$type": "color", "$description": "#5F281D" },
+      "active-bg": { "$value": "{color.oxblood.900}", "$type": "color", "$description": "#421810" }
+    },
+    "link": {
+      "bg":         { "$value": "transparent", "$type": "color" },
+      "text":       { "$value": "{color.bronze.600}", "$type": "color" },
+      "hover-text": { "$value": "{color.ink.900}", "$type": "color", "$description": "underline, 3px offset, on hover" }
+    },
+    "disabled-bg":     { "$value": "{color.neutral.300}", "$type": "color", "$description": "#BEC0C5 — applies to every variant; pair with {opacity.disabled} = 0.4" },
+    "press-scale":     { "$value": 0.96, "$type": "number", "$description": "Active-state transform, 100ms" },
+    "spinner-color":   { "$value": "{alias.brand-secondary}", "$type": "color", "$description": "= {color.bronze.500}. Loading state replaces label." },
+    "skeleton-bg":     { "$value": "{color.bronze.100}", "$type": "color" },
+    "shadow-rest":     { "$value": "{shadow.1}", "$type": "shadow" },
+    "shadow-hover":    { "$value": "{shadow.3}", "$type": "shadow", "$description": "Hover elevation lift, 150ms" },
+    "radius":          { "$value": "{radius.md}", "$type": "dimension", "$description": "3px — all sizes" },
+    "label-type":      { "$value": "{semantic.button}", "$type": "typography" },
+    "letter-spacing":  { "$value": "0.06em", "$type": "dimension" },
+    "size": {
+      "sm": {
+        "height":    { "$value": "2rem",      "$type": "dimension", "$description": "32px = {space.8}" },
+        "padding-y": { "$value": "0.4375rem", "$type": "dimension", "$description": "7px" },
+        "padding-x": { "$value": "{space.4}", "$type": "dimension", "$description": "16px" },
+        "font-size": { "$value": "0.75rem",   "$type": "dimension", "$description": "12px = {font.size.xs}" }
+      },
+      "md": {
+        "height":    { "$value": "2.5rem",     "$type": "dimension", "$description": "40px = {space.10} — default" },
+        "padding-y": { "$value": "0.6875rem",  "$type": "dimension", "$description": "11px" },
+        "padding-x": { "$value": "{space.6}",  "$type": "dimension", "$description": "24px" },
+        "font-size": { "$value": "0.84375rem", "$type": "dimension", "$description": "13.5px" }
+      },
+      "lg": {
+        "height":    { "$value": "3rem",      "$type": "dimension", "$description": "48px = {space.12}" },
+        "padding-y": { "$value": "0.875rem",  "$type": "dimension", "$description": "14px" },
+        "padding-x": { "$value": "1.875rem",  "$type": "dimension", "$description": "30px" },
+        "font-size": { "$value": "0.9375rem", "$type": "dimension", "$description": "15px" }
+      },
+      "xl": {
+        "height":    { "$value": "3.5rem",     "$type": "dimension", "$description": "56px" },
+        "padding-y": { "$value": "1.0625rem",  "$type": "dimension", "$description": "17px" },
+        "padding-x": { "$value": "2.375rem",   "$type": "dimension", "$description": "38px" },
+        "font-size": { "$value": "1.03125rem", "$type": "dimension", "$description": "16.5px" }
+      }
+    },
+    "touch-target-min": { "$value": "{component.touch-target-min}", "$type": "dimension", "$description": "44px — sm uses an invisible inset target on touch" }
+  },
+  "input": {
+    "outlined": {
+      "bg":            { "$value": "{color.base.cream-raised}", "$type": "color" },
+      "border":        { "$value": "{color.neutral.300}", "$type": "color", "$description": "#BEC0C5 default" },
+      "focus-border":  { "$value": "{focus.ring-color}", "$type": "color", "$description": "= {color.bronze.500} #A8895C" },
+      "focus-glow":    { "$value": "rgba(168,137,92,0.18)", "$type": "color", "$description": "bronze.500 at 18% — soft 3px halo" }
+    },
+    "filled": {
+      "bg":     { "$value": "{color.base.white}", "$type": "color", "$description": "Solid fill signals committed value" },
+      "border": { "$value": "{color.neutral.300}", "$type": "color" }
+    },
+    "standard": {
+      "bg":            { "$value": "transparent", "$type": "color" },
+      "border-bottom": { "$value": "{color.neutral.300}", "$type": "color", "$description": "underline only" },
+      "focus-border":  { "$value": "{focus.ring-color}", "$type": "color", "$description": "= {color.bronze.500}. Fixed 2026-06-24 audit: previously aliased {color.bronze.500} directly, bypassing the shared focus token." }
+    },
+    "error-border":   { "$value": "{semantic.light.state-error}", "$type": "color", "$description": "= {color.oxblood.700}. Pairs with icon + helper line + aria-invalid." },
+    "error-glow":     { "$value": "rgba(138,75,60,0.12)", "$type": "color" },
+    "success-border": { "$value": "{semantic.light.state-success}", "$type": "color", "$description": "= {color.verdant.700}. Verdant border + check, no glow." },
+    "placeholder":    { "$value": "{color.neutral.400}", "$type": "color" },
+    "text":           { "$value": "{color.ink.900}", "$type": "color" },
+    "radius":         { "$value": "{radius.md}", "$type": "dimension" },
+    "label-type":     { "$value": "{semantic.label}", "$type": "typography" },
+    "size": {
+      "sm": {
+        "height":    { "$value": "2.25rem",   "$type": "dimension", "$description": "36px" },
+        "padding-y": { "$value": "{space.2}", "$type": "dimension", "$description": "8px" },
+        "padding-x": { "$value": "0.6875rem", "$type": "dimension", "$description": "11px" },
+        "font-size": { "$value": "0.8125rem", "$type": "dimension", "$description": "13px" }
+      },
+      "md": {
+        "height":    { "$value": "2.75rem",   "$type": "dimension", "$description": "44px = {component.touch-target-min}; meets touch with no inset — default" },
+        "padding-y": { "$value": "0.6875rem", "$type": "dimension", "$description": "11px" },
+        "padding-x": { "$value": "0.8125rem", "$type": "dimension", "$description": "13px" },
+        "font-size": { "$value": "0.875rem",  "$type": "dimension", "$description": "14px = {font.size.sm}" }
+      },
+      "lg": {
+        "height":    { "$value": "3.25rem",   "$type": "dimension", "$description": "52px" },
+        "padding-y": { "$value": "0.875rem",  "$type": "dimension", "$description": "14px" },
+        "padding-x": { "$value": "{space.4}", "$type": "dimension", "$description": "16px" },
+        "font-size": { "$value": "0.9375rem", "$type": "dimension", "$description": "15px" }
+      }
+    }
+  },
+  "select": {
+    "trigger-bg":        { "$value": "{color.base.cream-raised}", "$type": "color" },
+    "trigger-border":    { "$value": "{color.neutral.300}", "$type": "color" },
+    "panel-bg":          { "$value": "{color.base.white}", "$type": "color" },
+    "panel-shadow":      { "$value": "{shadow.4}", "$type": "shadow", "$description": "Open panel, 6px gap below trigger" },
+    "panel-radius":      { "$value": "{radius.md}", "$type": "dimension" },
+    "option-hover-bg":   { "$value": "{color.bronze.100}", "$type": "color", "$description": "#F3EADC — hover + active option" },
+    "option-selected-text": { "$value": "{color.bronze.600}", "$type": "color", "$description": "with bronze check; aria-selected=true" },
+    "chevron-color":     { "$value": "{semantic.light.text-secondary}", "$type": "color", "$description": "rotates 180deg when aria-expanded" },
+    "empty-illustration":{ "$value": "{semantic.light.text-secondary}", "$type": "color", "$description": "no options / no match → heraldic line + CTA ({semantic.light.action-accent})" },
+    "disabled-opacity":  { "$value": "{opacity.disabled}", "$type": "number" }
+  },
+  "choice": {
+    "checkbox": {
+      "size-sm":      { "$value": "1rem",    "$type": "dimension", "$description": "16px" },
+      "size-md":      { "$value": "1.25rem", "$type": "dimension", "$description": "20px" },
+      "radius":       { "$value": "{radius.md}", "$type": "dimension" },
+      "off-border":   { "$value": "{color.neutral.400}", "$type": "color", "$description": "#A2A5AB, 1.5px" },
+      "off-bg":       { "$value": "{color.base.cream-raised}", "$type": "color" },
+      "checked-bg":   { "$value": "{color.ink.900}", "$type": "color", "$description": "fill on check; mark is cream, 2.4 stroke, draws in 200ms" },
+      "checked-mark": { "$value": "{color.base.cream}", "$type": "color" },
+      "indeterminate-bg": { "$value": "{color.ink.900}", "$type": "color", "$description": "aria-checked=mixed; cream bar instead of check" }
+    },
+    "radio": {
+      "radius":     { "$value": "{radius.full}", "$type": "dimension" },
+      "off-border": { "$value": "{color.neutral.400}", "$type": "color" },
+      "on-border":  { "$value": "{color.ink.900}", "$type": "color" },
+      "on-dot":     { "$value": "{color.ink.900}", "$type": "color" }
+    },
+    "toggle": {
+      "track-width-sm":  { "$value": "2.25rem", "$type": "dimension", "$description": "36px" },
+      "track-height-sm": { "$value": "1.25rem", "$type": "dimension", "$description": "20px" },
+      "track-width-md":  { "$value": "2.5rem",  "$type": "dimension", "$description": "40px" },
+      "track-height-md": { "$value": "1.4375rem","$type": "dimension","$description": "23px" },
+      "track-off":       { "$value": "{color.neutral.300}", "$type": "color" },
+      "track-on":        { "$value": "{semantic.light.state-success}", "$type": "color", "$description": "= {color.verdant.700}. The one place success colour carries meaning at rest." },
+      "thumb":           { "$value": "{color.base.white}", "$type": "color", "$description": "settle easing on travel; instant under reduced motion" },
+      "radius":          { "$value": "{radius.full}", "$type": "dimension" }
+    },
+    "focus-ring": { "$value": "{focus.ring-color}", "$type": "color", "$description": "shared 2px ring / 3px offset across all three" },
+    "disabled-opacity": { "$value": "{opacity.disabled}", "$type": "number" },
+    "touch-target-min": { "$value": "{component.touch-target-min}", "$type": "dimension", "$description": "44px even at sm" }
+  },
+  "slider": {
+    "track-bg":      { "$value": "{color.neutral.300}", "$type": "color", "$description": "#BEC0C5, 4px, {radius.full}" },
+    "track-height":  { "$value": "0.25rem", "$type": "dimension", "$description": "4px" },
+    "fill-bg":       { "$value": "{color.bronze.500}", "$type": "color", "$description": "#A8895C filled portion" },
+    "thumb-bg":      { "$value": "{color.ink.900}", "$type": "color", "$description": "#141E2D, 2px cream ring" },
+    "thumb-size":    { "$value": "1.125rem", "$type": "dimension", "$description": "18px" },
+    "thumb-ring":    { "$value": "{color.base.cream-raised}", "$type": "color" },
+    "thumb-active-scale": { "$value": 1.08, "$type": "number", "$description": "Dragging state; tooltip appears" },
+    "focus-ring":    { "$value": "{focus.ring-color}", "$type": "color" },
+    "disabled-opacity": { "$value": "{opacity.disabled}", "$type": "number" },
+    "touch-target-min": { "$value": "{component.touch-target-min}", "$type": "dimension", "$description": "thumb hit area ≥ 44px on touch" }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$description": "AVAN GROUP · A4.2 Composite Components (Molecules) · Component tier (W3C DTCG). Resolves the placeholders named in the A4 matrix into concrete entries. References avan-color-tokens.json, avan-spacing-tokens.json, avan-typography-tokens.json, avan-state-tokens.json. Molecule tokens govern the space BETWEEN atoms; they never reach inside an atom (see avan-component-tokens.json for A4.1). rgba overlays on the inverse rail have no global alias and are stated raw with lineage in $description.",
+  "card": {
+    "bg":               { "$value": "{color.base.cream-raised}", "$type": "color", "$description": "Elevated & outlined base #FAF8F3" },
+    "filled-bg":        { "$value": "{color.bronze.50}", "$type": "color", "$description": "Filled variant #FBF5EC" },
+    "outlined-border":  { "$value": "{semantic.light.border-hairline}", "$type": "color" },
+    "elevated-shadow":  { "$value": "{shadow.2}", "$type": "shadow", "$description": "Rest elevation" },
+    "hover-shadow":     { "$value": "{shadow.4}", "$type": "shadow", "$description": "Lift target — Elevated only; pairs with -3px translate" },
+    "hover-lift":       { "$value": "-0.1875rem", "$type": "dimension", "$description": "-3px translateY; dropped under reduced motion" },
+    "radius":           { "$value": "{radius.lg}", "$type": "dimension", "$description": "4px, all variants" },
+    "divider":          { "$value": "{semantic.light.border-hairline}", "$type": "color", "$description": "Above the action area" },
+    "padding": {
+      "compact":  { "$value": "{space.4}", "$type": "dimension", "$description": "16px" },
+      "default":  { "$value": "{space.6}", "$type": "dimension", "$description": "24px" },
+      "spacious": { "$value": "{space.8}", "$type": "dimension", "$description": "32px" }
+    }
+  },
+  "list": {
+    "item-hover-bg":         { "$value": "rgba(138,110,69,0.06)", "$type": "color", "$description": "bronze.600 at 6% — same overlay family as button.ghost.hover-bg" },
+    "item-selected-bg":      { "$value": "{color.bronze.100}", "$type": "color", "$description": "#F3EADC, selection mode" },
+    "divider-color":         { "$value": "{semantic.light.border-hairline}", "$type": "color", "$description": "full-bleed or inset" },
+    "item-min-height":       { "$value": "{component.touch-target-min}", "$type": "dimension", "$description": "44px every row" },
+    "item-padding-y":        { "$value": "{space.3}", "$type": "dimension", "$description": "12px" },
+    "item-padding-x":        { "$value": "0.875rem", "$type": "dimension", "$description": "14px" },
+    "item-gap":              { "$value": "0.8125rem", "$type": "dimension", "$description": "13px between slots" },
+    "leading-size":          { "$value": "2.125rem", "$type": "dimension", "$description": "34px avatar/icon slot — defines inset-divider start" },
+    "swipe-destructive-bg":  { "$value": "{color.oxblood.700}", "$type": "color", "$description": "rightmost swipe action; release-to-confirm" }
+  },
+  "nav": {
+    "item-active-bg":        { "$value": "rgba(197,165,114,0.14)", "$type": "color", "$description": "bronze.400 at 14% — tint on the ink rail" },
+    "item-active-indicator": { "$value": "{color.bronze.400}", "$type": "color", "$description": "3px leading bar #C5A572" },
+    "indicator-width":       { "$value": "0.1875rem", "$type": "dimension", "$description": "3px" },
+    "item-hover-bg":         { "$value": "rgba(197,165,114,0.10)", "$type": "color", "$description": "bronze.400 at 10%" },
+    "item-text":             { "$value": "rgba(244,241,234,0.72)", "$type": "color", "$description": "cream at 72% at rest" },
+    "item-text-active":      { "$value": "{color.base.cream}", "$type": "color", "$description": "100% on active/hover" },
+    "badge-bg":              { "$value": "{color.oxblood.700}", "$type": "color", "$description": "count or dot" },
+    "badge-text":            { "$value": "{color.base.white}", "$type": "color" },
+    "collapsed-width":       { "$value": "3.875rem", "$type": "dimension", "$description": "62px — icon + safe padding" },
+    "expanded-width":        { "$value": "13.125rem", "$type": "dimension", "$description": "210px" },
+    "collapse-duration":     { "$value": "{duration.slow}", "$type": "duration", "$description": "width animates on the standard curve" }
+  },
+  "form": {
+    "field-spacing":  { "$value": "{space.2}", "$type": "dimension", "$description": "8px — vertical gap label→control→helper" },
+    "label-type":     { "$value": "{semantic.label}", "$type": "typography", "$description": "uppercase, 0.14em" },
+    "label-gap":      { "$value": "{space.2}", "$type": "dimension", "$description": "label to control" },
+    "error-color":    { "$value": "{semantic.light.state-error}", "$type": "color", "$description": "= {color.oxblood.700}; border + icon + helper" },
+    "required-mark":  { "$value": "{color.bronze.500}", "$type": "color", "$description": "asterisk; supplements aria-required" },
+    "helper-type":    { "$value": "{semantic.caption}", "$type": "typography", "$description": "helper + error line; height reserved so layout never jumps" },
+    "tooltip-icon":   { "$value": "{semantic.light.text-secondary}", "$type": "color", "$description": "by the label, never inside the control" }
+  },
+  "search": {
+    "dropdown-bg":      { "$value": "{color.base.white}", "$type": "color", "$description": "results panel #FFFFFF" },
+    "dropdown-shadow":  { "$value": "{shadow.4}", "$type": "shadow" },
+    "dropdown-radius":  { "$value": "{radius.md}", "$type": "dimension" },
+    "highlight-bg":     { "$value": "{color.amber.100}", "$type": "color", "$description": "#FDE8CD matched substring; supplementary to the match text" },
+    "row-hover-bg":     { "$value": "{color.bronze.100}", "$type": "color", "$description": "active result row" },
+    "icon-color":       { "$value": "{semantic.light.text-secondary}", "$type": "color", "$description": "leading glass + recents" },
+    "clear-color":      { "$value": "{semantic.light.text-secondary}", "$type": "color", "$description": "appears only with a value" },
+    "mic-color":        { "$value": "{color.bronze.600}", "$type": "color", "$description": "optional; removed where voice is unsupported" }
+  }
+}

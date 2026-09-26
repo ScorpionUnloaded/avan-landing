@@ -1,0 +1,112 @@
+{
+  "$description": "AVAN GROUP · A3.2 Component State Matrix · Semantic + Component tiers (W3C DTCG). Pairs with avan-color-tokens.json and avan-motion-tokens.json.",
+  "focus": {
+    "ring-color": {
+      "$value": "{alias.brand-secondary}",
+      "$type": "color",
+      "$description": "Bronze ring. The single, consistent focus signal across every component and theme."
+    },
+    "ring-width": {
+      "$value": "2px",
+      "$type": "dimension"
+    },
+    "ring-offset": {
+      "$value": "3px",
+      "$type": "dimension",
+      "$description": "Gap between component edge and ring, so the ring reads as a halo, not a border."
+    }
+  },
+  "opacity": {
+    "disabled": {
+      "$value": 0.4,
+      "$type": "number",
+      "$description": "Floor for disabled controls. Never below 0.4 — must remain perceivable, just inert."
+    }
+  },
+  "semantic": {
+    "state-success": {
+      "$value": "{semantic.light.state-success}",
+      "$type": "color",
+      "$description": "Verdant. Confirmation flashes, success toasts, completed checks."
+    },
+    "state-error": {
+      "$value": "{semantic.light.state-error}",
+      "$type": "color",
+      "$description": "Oxblood. Validation borders, error icons, destructive context."
+    },
+    "transition-hover": {
+      "$value": {
+        "duration": "{duration.fast}",
+        "timingFunction": "{easing.standard}",
+        "delay": "0ms"
+      },
+      "$type": "transition",
+      "$description": "150ms feel: hover color/elevation shift. Uses fast tier rounded up for the larger surface."
+    },
+    "transition-active": {
+      "$value": {
+        "duration": "{duration.fast}",
+        "timingFunction": "{easing.standard}",
+        "delay": "0ms"
+      },
+      "$type": "transition",
+      "$description": "Press feedback — color darken, scale, shadow inset. Immediate."
+    },
+    "toast-duration": {
+      "$value": "2500ms",
+      "$type": "duration",
+      "$description": "Success/info toast persistence before auto-dismiss (2–3s). Dismissable early; errors do not auto-dismiss."
+    },
+    "shake-duration": {
+      "$value": "400ms",
+      "$type": "duration",
+      "$description": "Error shake — a single restrained horizontal correction, not a vibration. Disabled under reduced motion."
+    }
+  },
+  "component": {
+    "button-primary-bg": {
+      "$value": "{semantic.light.action-primary-bg}",
+      "$type": "color"
+    },
+    "button-primary-hover-bg": {
+      "$value": "{color.ink.800}",
+      "$type": "color"
+    },
+    "button-primary-active-bg": {
+      "$value": "{color.ink.950}",
+      "$type": "color"
+    },
+    "button-disabled-bg": {
+      "$value": "{color.neutral.300}",
+      "$type": "color"
+    },
+    "button-press-scale": {
+      "$value": 0.96,
+      "$type": "number",
+      "$description": "Shared with {component.button-press-scale} in the motion set."
+    },
+    "shadow-button-hover": {
+      "$value": "{shadow.3}",
+      "$type": "shadow",
+      "$description": "Elevation lift on hover. Resting buttons use shadow.1; pressed use inset."
+    },
+    "spinner-color": {
+      "$value": "{alias.brand-secondary}",
+      "$type": "color"
+    },
+    "skeleton-bg": {
+      "$value": "{color.bronze.100}",
+      "$type": "color",
+      "$description": "Base placeholder fill; shimmer highlight is bronze.300 at low alpha (see motion pattern.skeleton-shimmer)."
+    },
+    "border-error": {
+      "$value": "{semantic.light.state-error}",
+      "$type": "color"
+    },
+    "empty-state-illustration": {
+      "$value": "{semantic.light.text-secondary}",
+      "$type": "color",
+      "$description": "Heraldic line illustration in muted ink; CTA uses action-accent."
+    }
+  }
+}

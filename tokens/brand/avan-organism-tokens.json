@@ -1,0 +1,115 @@
+{
+  "$description": "AVAN GROUP · A4.3 Complex Components (Organisms) · Component tier (W3C DTCG). Resolves the placeholders named in the A4.3 matrix into concrete entries for the seven organisms: data-table, modal, drawer, datepicker, chart, navigation, stepper. References avan-color-tokens.json, avan-spacing-tokens.json, avan-motion-tokens.json, avan-state-tokens.json, avan-molecule-tokens.json. Organism tokens compose molecules and atoms into full surfaces; they never restate an atom's internals. Each performance target from the matrix is bound here to a concrete duration/easing/budget token so the contract is enforceable, not aspirational. rgba overlays and casts that have no global alias are stated raw with lineage in $description, per house convention.",
+
+  "table": {
+    "$description": "10,000 rows virtualized · windowed render, fixed row height, sticky header on the ink rail.",
+    "header-bg":        { "$value": "{color.ink.950}", "$type": "color", "$description": "#0E1722 — sticky header band; sits above scrolling body on the inverse rail" },
+    "header-text":      { "$value": "{color.base.cream}", "$type": "color", "$description": "label-cased column heads on the dark header" },
+    "row-hover-bg":     { "$value": "{color.bronze.50}", "$type": "color", "$description": "#FBF5EC — full-row hover wash; pointer only, never on touch" },
+    "row-selected-bg":  { "$value": "rgba(168,137,92,0.12)", "$type": "color", "$description": "bronze.500 at 12% — checkbox selection tint; co-exists with hover" },
+    "border-color":     { "$value": "rgba(168,137,92,0.28)", "$type": "color", "$description": "bronze.500 at 28% — cell + column rule; hairline weight" },
+    "border-width":     { "$value": "1px", "$type": "dimension", "$description": "single device pixel; never scales with density" },
+    "row-height":       { "$value": "2.75rem", "$type": "dimension", "$description": "44px — fixed; the constant that makes windowing math exact" },
+    "row-height-compact": { "$value": "2.25rem", "$type": "dimension", "$description": "36px density mode; still ≥ touch target via hit-slop" },
+    "cell-padding-x":   { "$value": "{space.3}", "$type": "dimension", "$description": "12px horizontal cell inset" },
+    "resize-handle":    { "$value": "{color.bronze.500}", "$type": "color", "$description": "column-resize grip, shown on header hover; 6px hit-slop" },
+    "sort-indicator":   { "$value": "{color.bronze.500}", "$type": "color", "$description": "active sort caret; direction conveyed by aria-sort too" },
+    "virtualize-threshold": { "$value": "100", "$type": "number", "$description": "rows above which windowing engages; below this the table renders in full" },
+    "virtualize-overscan":  { "$value": "8", "$type": "number", "$description": "rows rendered beyond viewport each side; absorbs fast-scroll without blank flashes" }
+  },
+
+  "modal": {
+    "$description": "<100ms open · compositor-only entrance (opacity + scale), no layout on the critical path. Focus trap + scroll lock are structural, not animated.",
+    "backdrop-bg":      { "$value": "rgba(14,23,34,0.58)", "$type": "color", "$description": "ink.950 at 58% — scrim; dismiss-on-click unless the dialog is blocking" },
+    "surface-bg":       { "$value": "{color.base.cream-raised}", "$type": "color", "$description": "#FAF8F3 dialog panel" },
+    "shadow":           { "$value": [{ "offsetX": "0", "offsetY": "24px", "blur": "60px", "spread": "0", "color": "rgba(14,23,34,0.34)" }], "$type": "shadow", "$description": "Deeper than {shadow.5}; reserved for the modal layer only" },
+    "radius":           { "$value": "{radius.xl}", "$type": "dimension", "$description": "6px corners" },
+    "max-width": {
+      "sm":         { "$value": "26.25rem", "$type": "dimension", "$description": "420px — confirmations, single-field prompts" },
+      "md":         { "$value": "35rem",    "$type": "dimension", "$description": "560px — default form modal" },
+      "lg":         { "$value": "47.5rem",  "$type": "dimension", "$description": "760px — multi-column / review" },
+      "fullscreen": { "$value": "100vw",    "$type": "dimension", "$description": "edge-to-edge; mobile takeover" }
+    },
+    "enter-duration":   { "$value": "{duration.normal}", "$type": "duration", "$description": "200ms visual settle — runs AFTER first paint; never gates the <100ms open contract" },
+    "enter-easing":     { "$value": "{easing.emphasized}", "$type": "cubicBezier", "$description": "weighted decelerate for the deliberate arrival" },
+    "enter-scale-from": { "$value": "0.96", "$type": "number", "$description": "scale origin; pairs with opacity 0→1" },
+    "exit-duration":    { "$value": "{duration.fast}", "$type": "duration", "$description": "100ms — leaves faster than it enters, on {easing.accelerate}" }
+  },
+
+  "drawer": {
+    "$description": "60fps swipe · transform-only tracking (translateX), no width/left animation. Scrim fades on opacity in parallel.",
+    "bg":            { "$value": "{color.base.cream-raised}", "$type": "color", "$description": "#FAF8F3 sheet surface" },
+    "scrim-bg":      { "$value": "rgba(14,23,34,0.48)", "$type": "color", "$description": "ink.950 at 48% — lighter than modal; the drawer is less blocking" },
+    "shadow":        { "$value": [{ "offsetX": "-8px", "offsetY": "0", "blur": "32px", "spread": "0", "color": "rgba(14,23,34,0.22)" }], "$type": "shadow", "$description": "Horizontal cast for the right anchor; mirror X for left anchor" },
+    "width": {
+      "sm": { "$value": "20rem", "$type": "dimension", "$description": "320px — filters, quick actions" },
+      "md": { "$value": "25rem", "$type": "dimension", "$description": "400px — default detail sheet" },
+      "lg": { "$value": "30rem", "$type": "dimension", "$description": "480px — forms / nested content" }
+    },
+    "swipe-close-threshold": { "$value": "0.4", "$type": "number", "$description": "fraction of width dragged past which release commits the close" },
+    "swipe-velocity-commit": { "$value": "0.5", "$type": "number", "$description": "px/ms flick velocity that commits close regardless of distance" },
+    "track-easing":  { "$value": "{easing.standard}", "$type": "cubicBezier", "$description": "applied only to the release-snap, not to finger tracking (which is 1:1)" },
+    "frame-budget":  { "$value": "16.7ms", "$type": "duration", "$description": "per-frame ceiling for the 60fps target; transform + opacity stay on the compositor" }
+  },
+
+  "datepicker": {
+    "$description": "Keyboard navigable · roving tabindex across the day grid; arrows move, Enter selects, Home/End jump week ends.",
+    "cell-hover-bg":    { "$value": "{color.bronze.100}", "$type": "color", "$description": "#F3EADC — day cell hover / focus background" },
+    "selected-bg":      { "$value": "{color.ink.900}", "$type": "color", "$description": "#141E2D — chosen day; cream text for contrast" },
+    "selected-text":    { "$value": "{color.base.cream}", "$type": "color", "$description": "on the selected ink cell" },
+    "range-bg":         { "$value": "{color.bronze.50}", "$type": "color", "$description": "#FBF5EC — in-range fill between range endpoints" },
+    "range-endpoint-bg":{ "$value": "{color.ink.900}", "$type": "color", "$description": "start + end caps reuse selected-bg" },
+    "today-ring":       { "$value": "{color.bronze.500}", "$type": "color", "$description": "1px ring marking today; independent of selection" },
+    "disabled-text":    { "$value": "{color.neutral.300}", "$type": "color", "$description": "out-of-bounds days (min/max) + adjacent-month fill" },
+    "cell-size":        { "$value": "{component.touch-target-min}", "$type": "dimension", "$description": "44px tap/click cell; grid is 7 × cell-size. Fixed 2026-06-24 audit: previously hardcoded 2.25rem (36px), below the system touch-target floor with no documented hit-slop exception." },
+    "cell-radius":      { "$value": "{radius.md}", "$type": "dimension", "$description": "3px; range fill stays rectangular between caps" }
+  },
+
+  "chart": {
+    "$description": "Per A4.3 §6 — categorical series palette ordered for color-blind separability (luminance-stepped, never hue-only). Every chart ships a data-table alternative; color is never the sole encoder.",
+    "series": {
+      "1": { "$value": "{color.azure.700}",   "$type": "color", "$description": "#195883 — primary series" },
+      "2": { "$value": "{color.bronze.500}",   "$type": "color", "$description": "#A8895C" },
+      "3": { "$value": "{color.verdant.600}",  "$type": "color", "$description": "#3F7B5A" },
+      "4": { "$value": "{color.amber.600}",    "$type": "color", "$description": "#995D00" },
+      "5": { "$value": "{color.oxblood.700}",  "$type": "color", "$description": "#8A4B3C" },
+      "6": { "$value": "{color.ink.500}",      "$type": "color", "$description": "#7089B6" },
+      "7": { "$value": "{color.azure.400}",    "$type": "color", "$description": "#6BACE0" },
+      "8": { "$value": "{color.bronze.300}",   "$type": "color", "$description": "#D4BD9A — beyond 8 series, switch to small-multiples not more hues" }
+    },
+    "tooltip-bg":    { "$value": "{color.ink.950}", "$type": "color", "$description": "#0E1722 floating tooltip; cream text" },
+    "tooltip-text":  { "$value": "{color.base.cream}", "$type": "color" },
+    "grid-line":     { "$value": "rgba(168,137,92,0.18)", "$type": "color", "$description": "bronze.500 at 18% — axis + gridlines; recede behind data" },
+    "axis-text":     { "$value": "{semantic.light.text-secondary}", "$type": "color", "$description": "tick + axis labels" },
+    "skeleton-bg":   { "$value": "rgba(168,137,92,0.10)", "$type": "color", "$description": "bronze.500 at 10% — loading shimmer base; linear easing only" }
+  },
+
+  "nav": {
+    "$description": "Collapse <300ms · width animates on {easing.standard}; rail content cross-fades, never reflows mid-transition. Distinct from molecule nav-item tokens, which govern a single item's states.",
+    "bg":             { "$value": "{color.ink.950}", "$type": "color", "$description": "#0E1722 — top bar / sidebar rail surface" },
+    "border-color":   { "$value": "rgba(168,137,92,0.20)", "$type": "color", "$description": "bronze.500 at 20% — rail edge + breadcrumb separators on the dark surface" },
+    "item-spacing": {
+      "comfortable": { "$value": "{space.3}", "$type": "dimension", "$description": "12px between nav items — default density" },
+      "compact":     { "$value": "{space.2}", "$type": "dimension", "$description": "8px — dense top bars / bottom bar" }
+    },
+    "breadcrumb-separator": { "$value": "rgba(244,241,234,0.40)", "$type": "color", "$description": "cream at 40% — chevron glyph between crumbs" },
+    "tab-indicator":  { "$value": "{color.bronze.500}", "$type": "color", "$description": "2px underline on the active tab; slides between tabs on {easing.in-out}" },
+    "tab-indicator-height": { "$value": "0.125rem", "$type": "dimension", "$description": "2px" },
+    "megamenu-bg":    { "$value": "{color.base.cream-raised}", "$type": "color", "$description": "mega-menu panel drops onto the light surface, not the rail" },
+    "megamenu-shadow":{ "$value": "{shadow.4}", "$type": "shadow", "$description": "panel elevation" },
+    "collapse-duration": { "$value": "{duration.slow}", "$type": "duration", "$description": "300ms — the <300ms ceiling; width on {easing.standard}" }
+  },
+
+  "stepper": {
+    "$description": "Step transition 200ms · panel cross-fade + 16px slide on {easing.standard}; the rail node states update instantly (state is truth, motion is garnish).",
+    "active-color":     { "$value": "{color.bronze.500}", "$type": "color", "$description": "#A8895C — current step node + connector up to it" },
+    "active-ring":      { "$value": "rgba(168,137,92,0.24)", "$type": "color", "$description": "bronze.500 at 24% — focus/active halo on the current node" },
+    "completed-color":  { "$value": "{color.verdant.700}", "$type": "color", "$description": "#2B5F43 — passed steps; check glyph, not just fill" },
+    "upcoming-color":   { "$value": "{color.neutral.300}", "$type": "color", "$description": "#BEC0C5 — not-yet-reached nodes + connectors" },
+    "error-color":      { "$value": "{semantic.light.state-error}", "$type": "color", "$description": "= {color.oxblood.700}; a step that failed validation" },
+    "connector-width":  { "$value": "0.125rem", "$type": "dimension", "$description": "2px line between nodes" },
+    "node-size":        { "$value": "1.75rem", "$type": "dimension", "$description": "28px circle; label sits beside or below" },
+    "transition-duration": { "$value": "{duration.normal}", "$type": "duration", "$description": "200ms — the exact panel-change contract" },
+    "transition-slide": { "$value": "1rem", "$type": "dimension", "$description": "16px enter offset; dropped under reduced motion" }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$description": "AVAN GROUP · A3.3 Feedback & System Status · Semantic + Component tiers (W3C DTCG). References color, motion, and state token sets.",
+  "z-index": {
+    "base": { "$value": 0, "$type": "number" },
+    "dropdown": { "$value": 1000, "$type": "number" },
+    "sticky": { "$value": 1100, "$type": "number" },
+    "overlay": { "$value": 1300, "$type": "number", "$description": "Scrim behind modals and sheets." },
+    "modal": { "$value": 1400, "$type": "number" },
+    "toast": { "$value": 1600, "$type": "number", "$description": "Toasts sit above modals — system status outranks task context." },
+    "tooltip": { "$value": 1700, "$type": "number" }
+  },
+  "component": {
+    "toast-width": { "$value": "380px", "$type": "dimension" },
+    "toast-offset": { "$value": "{space.6}", "$type": "dimension", "$description": "Distance from the viewport edge (1.5rem)." },
+    "toast-gap": { "$value": "{space.3}", "$type": "dimension", "$description": "Vertical gap between stacked toasts." },
+    "toast-max-visible": { "$value": 3, "$type": "number", "$description": "Beyond three, oldest collapse into a +N counter." },
+    "toast-enter": {
+      "$type": "transition",
+      "$value": { "duration": "{duration.normal}", "timingFunction": "{easing.standard}", "delay": "0ms" },
+      "$description": "Slide-in from the anchored edge with fade."
+    },
+    "toast-exit": {
+      "$type": "transition",
+      "$value": { "duration": "{duration.normal}", "timingFunction": "{easing.accelerate}", "delay": "0ms" }
+    },
+    "snackbar-bg": { "$value": "{color.ink.950}", "$type": "color" }
+  },
+  "semantic": {
+    "duration-toast-info": { "$value": "{semantic.toast-duration}", "$type": "duration", "$description": "Info / success auto-dismiss — 2.5s." },
+    "duration-toast-error": { "$value": "0ms", "$type": "duration", "$description": "Errors do not auto-dismiss. 0 = persist until acknowledged." },
+    "undo-window": { "$value": "5000ms", "$type": "duration", "$description": "Grace period for undoable destructive actions before commit." },
+    "retry-backoff-base": { "$value": "1000ms", "$type": "duration", "$description": "Exponential backoff base for automatic retries (1s, 2s, 4s…)." },
+    "feedback-success": { "$value": "{semantic.light.state-success}", "$type": "color" },
+    "feedback-error": { "$value": "{semantic.light.state-error}", "$type": "color" },
+    "feedback-warning": { "$value": "{semantic.light.state-warning}", "$type": "color" },
+    "feedback-info": { "$value": "{semantic.light.state-info}", "$type": "color" }
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "$description": "AVAN GROUP · A3.1 Motion & Animation · Global + Semantic + Component + Pattern tiers (W3C DTCG). Single source of truth for the motion language. avan-state-tokens.json aliases into {easing.standard}, {easing.settle}, {duration.fast}, {duration.normal}; consumed downstream by B5 Animation Library and B6.7 Runtime Performance. Motion is purposeful, swift, quiet — the house does not perform.",
+  "easing": {
+    "linear": {
+      "$value": [0, 0, 1, 1],
+      "$type": "cubicBezier",
+      "$description": "No acceleration. Progress bars, spinners, looping shimmer only."
+    },
+    "standard": {
+      "$value": [0.2, 0.7, 0.2, 1],
+      "$type": "cubicBezier",
+      "$description": "House decelerate curve. The default for entrances and most interface motion — fast on, settles soft."
+    },
+    "accelerate": {
+      "$value": [0.4, 0, 1, 1],
+      "$type": "cubicBezier",
+      "$description": "Ease-in. Exits and elements leaving the screen — gathers speed as it departs."
+    },
+    "in-out": {
+      "$value": [0.65, 0, 0.35, 1],
+      "$type": "cubicBezier",
+      "$description": "Symmetric. Movement that begins and ends on screen — reordering, slide-between."
+    },
+    "emphasized": {
+      "$value": [0.2, 0, 0, 1],
+      "$type": "cubicBezier",
+      "$description": "Strong, weighted decelerate. Reserved for deliberate moments — modals, shared-element transitions."
+    },
+    "settle": {
+      "$value": [0.34, 1.16, 0.64, 1],
+      "$type": "cubicBezier",
+      "$description": "A single, restrained overshoot. Permitted ONLY on the toggle knob. The house does not bounce elsewhere."
+    }
+  },
+  "duration": {
+    "instant": {
+      "$value": "0ms",
+      "$type": "duration",
+      "$description": "No animation. State applied immediately — focus rings, reduced-motion fallback."
+    },
+    "fast": {
+      "$value": "100ms",
+      "$type": "duration",
+      "$description": "Micro-feedback. Button press, hover color shift, checkbox tick."
+    },
+    "normal": {
+      "$value": "200ms",
+      "$type": "duration",
+      "$description": "The workhorse. Fades, slides, scales, toggles — most interface motion."
+    },
+    "slow": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Larger surfaces. Popovers, drawers, expanding panels."
+    },
+    "deliberate": {
+      "$value": "500ms",
+      "$type": "duration",
+      "$description": "Consequential transitions. Page changes, shared elements, modal entrance."
+    }
+  },
+  "performance": {
+    "frame-budget": {
+      "$value": "16ms",
+      "$type": "duration",
+      "$description": "60fps ceiling. Every animation must hold one frame within this budget."
+    },
+    "animatable-properties": {
+      "$value": ["transform", "opacity"],
+      "$type": "array",
+      "$description": "The only properties motion may touch. Layout and paint properties are forbidden."
+    }
+  },
+  "semantic": {
+    "pattern-fade": {
+      "$value": {
+        "duration": "{duration.normal}",
+        "timingFunction": "{easing.standard}",
+        "delay": "0ms"
+      },
+      "$type": "transition",
+      "$description": "Opacity 0→1. Content swaps, tooltips, overlays appearing in place."
+    },
+    "pattern-slide": {
+      "$value": {
+        "duration": "{duration.normal}",
+        "timingFunction": "{easing.standard}",
+        "delay": "0ms"
+      },
+      "$type": "transition",
+      "$description": "translateY/X paired with fade. Direction carries meaning — entrances rise, exits depart. Distance set by slide-distance."
+    },
+    "slide-distance": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Travel for the slide pattern. Range 8–16px by surface size; 16px is the default. Sign and axis are set by direction."
+    },
+    "pattern-scale": {
+      "$value": {
+        "duration": "{duration.normal}",
+        "timingFunction": "{easing.standard}",
+        "delay": "0ms"
+      },
+      "$type": "transition",
+      "$description": "scale 0.96→1 with fade. Surfaces emerging from a trigger — menus, popovers, modals."
+    },
+    "stagger-interval": {
+      "$value": "40ms",
+      "$type": "duration",
+      "$description": "Delay between sequential children. After stagger-cap, remaining children enter together so the sequence never drags."
+    },
+    "stagger-cap": {
+      "$value": 8,
+      "$type": "number",
+      "$description": "Maximum staggered children (8 items / 320ms total). Beyond this, items enter simultaneously."
+    },
+    "scale-from": {
+      "$value": 0.96,
+      "$type": "number",
+      "$description": "Origin scale for emerging surfaces (pattern-scale, modal-enter) and button press. Grows to 1.0; never overshoots — the toggle knob is the sole exception."
+    },
+    "reduced-motion": {
+      "duration": {
+        "$value": "{duration.fast}",
+        "$type": "duration",
+        "$description": "Under prefers-reduced-motion, all motion collapses to an opacity-only fade at this duration."
+      },
+      "timingFunction": {
+        "$value": "{easing.linear}",
+        "$type": "cubicBezier",
+        "$description": "No translate, no scale, no shimmer. Cross-fade replaces every spatial transition."
+      }
+    }
+  },
+  "component": {
+    "button-press-scale": {
+      "$value": 0.96,
+      "$type": "number",
+      "$description": "Active-state compression. Returns to 1 on release."
+    },
+    "button-press": {
+      "$value": {
+        "duration": "{duration.fast}",
+        "timingFunction": "{easing.standard}",
+        "delay": "0ms"
+      },
+      "$type": "transition"
+    },
+    "toggle-knob": {
+      "$value": {
+        "duration": "{duration.normal}",
+        "timingFunction": "{easing.settle}",
+        "delay": "0ms"
+      },
+      "$type": "transition",
+      "$description": "translateX across the track. The one permitted overshoot in the system."
+    },
+    "checkbox-draw": {
+      "$value": {
+        "duration": "{duration.normal}",
+        "timingFunction": "{easing.standard}",
+        "delay": "0ms"
+      },
+      "$type": "transition",
+      "$description": "Checkmark stroke draws via stroke-dashoffset. Box fill cross-fades beneath."
+    },
+    "toggle-knob-travel": {
+      "$value": "22px",
+      "$type": "dimension",
+      "$description": "translateX distance of the toggle knob between off and on. Snaps to position with no overshoot under reduced motion."
+    },
+    "focus-ring": {
+      "$value": {
+        "duration": "{duration.instant}",
+        "timingFunction": "{easing.standard}",
+        "delay": "0ms"
+      },
+      "$type": "transition",
+      "$description": "Focus is exempt from motion — the ring appears at instant so keyboard users never wait to see where they are."
+    }
+  },
+  "pattern": {
+    "page-enter-forward": {
+      "$value": {
+        "duration": "{duration.deliberate}",
+        "timingFunction": "{easing.emphasized}",
+        "delay": "0ms"
+      },
+      "$type": "transition",
+      "$description": "Forward navigation: new view enters from the right with fade. Back reverses (enters from left)."
+    },
+    "modal-enter": {
+      "$value": {
+        "duration": "{duration.deliberate}",
+        "timingFunction": "{easing.emphasized}",
+        "delay": "0ms"
+      },
+      "$type": "transition",
+      "$description": "scale 0.96→1 + fade; scrim fades in beneath at {duration.slow}."
+    },
+    "sheet-enter": {
+      "$value": {
+        "duration": "{duration.slow}",
+        "timingFunction": "{easing.standard}",
+        "delay": "0ms"
+      },
+      "$type": "transition",
+      "$description": "Bottom sheet / drawer slides from edge with the scrim."
+    },
+    "shared-element": {
+      "$value": {
+        "duration": "{duration.deliberate}",
+        "timingFunction": "{easing.emphasized}",
+        "delay": "0ms"
+      },
+      "$type": "transition",
+      "$description": "A matched element morphs position and size between routes — continuity of identity."
+    },
+    "skeleton-shimmer": {
+      "$value": {
+        "duration": "1400ms",
+        "timingFunction": "{easing.linear}",
+        "delay": "0ms"
+      },
+      "$type": "transition",
+      "$description": "Looping highlight sweep over placeholder blocks. Collapses to a static block under reduced motion."
+    }
+  }
+}
