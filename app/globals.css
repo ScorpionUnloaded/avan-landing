@@ -1,49 +1,61 @@
 @import "tailwindcss";
-@import "../styles/theme.css";
+@import "../styles/tokens.generated.css";
+@import "../styles/theme.generated.css";
 
-/* Font stacks compose the next/font variables (set on <html>). The brand's
-   primary sans is Suisse Int'l; until it is licensed, Hanken Grotesk carries
-   the text face (never Inter — see docs/brand-decisions.md). */
-:root {
-  --avan-font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
-  --avan-font-sans: var(--font-text), "Suisse Int'l", system-ui, sans-serif;
-  --avan-font-mono: "Suisse Int'l Mono", var(--font-plex-mono), ui-monospace, monospace;
-}
-
-/* Tailwind v4 preflight differs from v3 in two places this design relied on. */
+/* ============================================================================
+   Base. Every colour, easing and duration below is a token variable; raw values
+   live only in tokens/** (see scripts/tokens/build.mjs).
+   ========================================================================== */
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--avan-border-hairline, currentColor);
+    border-color: var(--avan-border-hairline);
   }
-  button:not(:disabled),
-  [role="button"]:not(:disabled) {
-    cursor: pointer;
-  }
-}
 
-@layer base {
   html {
-    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    /* Firefox: a bronze thread on an invisible track. */
-    scrollbar-color: rgba(168, 137, 92, 0.6) transparent;
+    /* Anchor jumps clear the fixed nav (WCAG 2.4.11 focus not obscured). */
+    scroll-padding-top: calc(var(--avan-nav-h) + 1rem);
+    scrollbar-color: color-mix(in oklch, var(--avan-accent) 60%, transparent) transparent;
+    background-color: var(--avan-surface-canvas);
   }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
+    background-color: var(--avan-surface-canvas);
+    color: var(--avan-fg);
+    font-family: var(--avan-font-text);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
   p {
     text-wrap: pretty;
   }
-  ::selection {
-    background: #c5a572;
-    color: #0e1722;
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
   }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--avan-selection-bg);
+    color: var(--avan-selection-fg);
+  }
+
   /* WebKit scrollbar — thin, bronze, trackless; the page's one persistent ornament. */
   ::-webkit-scrollbar {
     width: 10px;
@@ -53,79 +65,187 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: rgba(168, 137, 92, 0.55);
+    background-color: color-mix(in oklch, var(--avan-accent) 55%, transparent);
     border: 3px solid transparent;
     background-clip: content-box;
     border-radius: 5px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(138, 110, 69, 0.8);
+    background-color: var(--avan-accent);
+  }
+
+  /* One focus language everywhere (avan-state-tokens: 2px ring, 3px offset). */
+  :focus-visible {
+    outline: var(--avan-focus-width) solid var(--avan-focus-ring);
+    outline-offset: var(--avan-focus-offset);
   }
 }
 
-/* Dark-surface scope: remap semantic vars so primitives adapt automatically. */
-.avan-dark {
-  --avan-text-eyebrow: #c5a572;
-  --avan-text-primary: #eceae2;
-  --avan-text-secondary: #9fa8b4;
-  --avan-border-hairline: rgba(197, 165, 114, 0.22);
-  --avan-surface-base: #0e1722;
+/* ============================================================================
+   Surfaces. A section's `data-surface` re-scopes every semantic role (see
+   tokens.generated.css); `surface-depth` adds the light that makes navy read
+   as a hall rather than a flat fill.
+   ========================================================================== */
+@layer components {
+  .surface-depth {
+    position: relative;
+    isolation: isolate;
+  }
+  .surface-depth::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(70% 40% at 30% 0%, color-mix(in oklch, var(--avan-gilt) 10%, transparent) 0%, transparent 60%),
+      radial-gradient(120% 90% at 50% 115%, transparent 40%, color-mix(in oklch, var(--avan-black) 50%, transparent) 100%);
+  }
+
+  /* Bronze hairline underline that grows 0→100% on hover. */
+  .avan-underline {
+    position: relative;
+  }
+  .avan-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    background-color: var(--avan-gilt);
+    transition: transform var(--avan-dur-slow) var(--avan-ease-standard);
+  }
+  .avan-underline:hover::after,
+  .avan-underline:focus-visible::after,
+  .avan-underline[aria-current]::after {
+    transform: scaleX(1);
+  }
+
+  /* Swapped-in states (e.g. the form's success panel). */
+  .fade-rise {
+    animation: avan-fade-rise var(--avan-dur-deliberate) var(--avan-ease-emphasized) both;
+  }
+  /* In-place text changes: opacity only, so the form never appears to move. */
+  .fade-soft {
+    animation: avan-fade var(--avan-dur-slow) var(--avan-ease-standard) both;
+  }
+
+  /* Custom chevron for selects (appearance-none strips the native arrow). */
+  .avan-select {
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--avan-accent) 50%),
+      linear-gradient(135deg, var(--avan-accent) 50%, transparent 50%);
+    background-position:
+      calc(100% - 1.25rem) 50%,
+      calc(100% - 0.875rem) 50%;
+    background-size: 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 2.75rem;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Skip link — clipped away until keyboard focus reveals it. */
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 100;
+    padding: 0.625rem 1rem;
+    background: var(--avan-action-bg);
+    color: var(--avan-action-fg);
+    font-size: var(--text-overline);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    clip-path: inset(50%);
+    opacity: 0;
+  }
+  .skip-link:focus-visible {
+    clip-path: none;
+    opacity: 1;
+  }
+
+  /* Hero atmosphere — the designed fallback behind the footage: warm gilt light
+     through navy. The single permitted ambient loop (Token Sheet guardrail). */
+  .hero-atmosphere {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(58% 50% at 18% 6%, color-mix(in oklch, var(--avan-bronze-400) 38%, transparent) 0%, transparent 60%),
+      radial-gradient(52% 46% at 84% 14%, color-mix(in oklch, var(--avan-bronze-300) 24%, transparent) 0%, transparent 55%),
+      radial-gradient(95% 85% at 50% 118%, transparent 0%, color-mix(in oklch, var(--avan-black) 55%, transparent) 100%),
+      linear-gradient(180deg, var(--avan-surface-raised) 0%, var(--avan-ink-950) 55%, var(--avan-black) 100%);
+  }
+  .hero-atmosphere::before {
+    content: "";
+    position: absolute;
+    inset: -25%;
+    background: radial-gradient(38% 55% at 32% 2%, color-mix(in oklch, var(--avan-bronze-200) 18%, transparent), transparent 70%);
+    animation: avan-drift 22s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  /* Duotone legibility wash over the footage (A2.4 ink scrim, radial). */
+  .hero-wash {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      120% 90% at 50% 10%,
+      color-mix(in oklch, var(--avan-black) 20%, transparent) 0%,
+      color-mix(in oklch, var(--avan-black) 62%, transparent) 55%,
+      color-mix(in oklch, var(--avan-black) 92%, transparent) 100%
+    );
+  }
+  /* Candlelight behind a mark — gilt light, never glitter (Token Sheet). */
+  .glow-gilt {
+    background: radial-gradient(
+      closest-side,
+      color-mix(in oklch, var(--avan-gilt) 15%, transparent) 0%,
+      color-mix(in oklch, var(--avan-gilt) 5%, transparent) 55%,
+      transparent 100%
+    );
+  }
+  /* Ink scrims over imagery (A2.4): deep for dark grounds, a breath for light. */
+  .wash-ink {
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklch, var(--avan-ink-950) 15%, transparent) 0%,
+      color-mix(in oklch, var(--avan-ink-950) 55%, transparent) 100%
+    );
+  }
+  .wash-ink-soft {
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklch, var(--avan-ink-900) 4%, transparent) 0%,
+      color-mix(in oklch, var(--avan-ink-900) 16%, transparent) 100%
+    );
+  }
+  .wash-deep {
+    background: radial-gradient(
+      80% 70% at 50% 40%,
+      color-mix(in oklch, var(--avan-ink-950) 55%, transparent) 0%,
+      color-mix(in oklch, var(--avan-black) 92%, transparent) 100%
+    );
+  }
+  .hero-grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-size: 140px 140px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
 }
 
-/* Depth for navy sections: a faint bronze luminance at the top edge and a
-   corner vignette, so dark beats read as candlelit halls, not flat fills. */
-.avan-depth {
-  position: relative;
-}
-.avan-depth::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(70% 40% at 30% 0%, rgba(197, 165, 114, 0.1) 0%, rgba(197, 165, 114, 0) 60%),
-    radial-gradient(120% 90% at 50% 115%, rgba(10, 14, 20, 0) 40%, rgba(10, 14, 20, 0.5) 100%);
-}
-
-/* Bronze hairline underline that grows 0→100% on hover (360ms). */
-.avan-underline {
-  position: relative;
-}
-.avan-underline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  height: 1px;
-  width: 100%;
-  transform: scaleX(0);
-  transform-origin: left;
-  background-color: #c5a572;
-  transition: transform 360ms cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.avan-underline:hover::after,
-.avan-underline:focus-visible::after,
-.avan-underline.is-active::after {
-  transform: scaleX(1);
-}
-/* Keyboard focus gets an explicit ring in addition to the drawn underline. */
-.avan-underline:focus-visible {
-  outline: 1px solid var(--avan-focus-ring);
-  outline-offset: 4px;
-}
-
-/* Entry for swapped-in states (e.g. the inquiry form's success panel). */
-.fade-rise {
-  animation: fadeRise 500ms cubic-bezier(0.2, 0, 0, 1) both;
-}
-
-/* Quieter sibling for in-place text changes (e.g. the reassurance line
-   re-addressing itself when the nature of inquiry changes) — opacity only,
-   no travel, so the form never appears to move. */
-.fade-soft {
-  animation: fadeSoft 360ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
-@keyframes fadeSoft {
+@keyframes avan-fade {
   from {
     opacity: 0;
   }
@@ -133,110 +253,17 @@
     opacity: 1;
   }
 }
-@keyframes fadeRise {
+@keyframes avan-fade-rise {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(var(--avan-reveal-distance));
   }
   to {
     opacity: 1;
     transform: none;
   }
 }
-
-/* Right-edge fade on the mobile nav's scrollable link row — signals that more
-   links exist off-screen instead of clipping them mid-letter. The row carries
-   matching right padding so the last link can scroll clear of the fade. */
-.nav-scroll-fade {
-  -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 36px), transparent 100%);
-  mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 36px), transparent 100%);
-}
-
-/* Custom chevron for selects (appearance-none strips the native arrow).
-   Bronze-600 stroke, matching the focus/hairline vocabulary. */
-.avan-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238A6E45' stroke-width='1.5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 12px 8px;
-  padding-right: 2.75rem;
-}
-
-/* Hero scroll cue — a bronze segment slowly descending inside a faint track. */
-.scroll-cue-track {
-  position: relative;
-  overflow: hidden;
-  background: rgba(197, 165, 114, 0.25);
-}
-.scroll-cue-inner {
-  position: absolute;
-  inset: 0;
-  background: #c5a572;
-  animation: scrollCue 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-}
-@keyframes scrollCue {
-  0% {
-    transform: translateY(-100%);
-  }
-  55% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
-
-/* Hide scrollbar on the mobile nav's horizontally-scrollable link row while
-   keeping it keyboard/touch scrollable — purely cosmetic, not a focus trap. */
-.scrollbar-none {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.scrollbar-none::-webkit-scrollbar {
-  display: none;
-}
-
-/* Skip link — visually hidden until focused. */
-.skip-link {
-  position: fixed;
-  top: 0.75rem;
-  left: 0.75rem;
-  z-index: 100;
-  transform: translateY(-150%);
-  background: #141e2d;
-  color: #f4f1ea;
-  padding: 0.5rem 1rem;
-  font-family: var(--avan-font-mono);
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  transition: transform 200ms cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.skip-link:focus {
-  transform: translateY(0);
-  outline: 2px solid #c5a572;
-}
-
-/* Hero atmosphere — designed fallback so the hero reads as intentional without
-   footage. Warm bronze light through navy, slow drift, fine grain. */
-.hero-atmosphere {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(58% 50% at 18% 6%, rgba(197, 165, 114, 0.38) 0%, rgba(197, 165, 114, 0) 60%),
-    radial-gradient(52% 46% at 84% 14%, rgba(212, 189, 154, 0.24) 0%, rgba(212, 189, 154, 0) 55%),
-    radial-gradient(95% 85% at 50% 118%, rgba(10, 14, 20, 0) 0%, rgba(10, 14, 20, 0.55) 100%),
-    linear-gradient(180deg, #16202e 0%, #0e1722 55%, #0a0e14 100%);
-}
-.hero-atmosphere::before {
-  content: "";
-  position: absolute;
-  inset: -25%;
-  background: radial-gradient(38% 55% at 32% 2%, rgba(255, 221, 160, 0.18), rgba(255, 221, 160, 0) 70%);
-  animation: heroDrift 22s ease-in-out infinite alternate;
-  will-change: transform;
-}
-@keyframes heroDrift {
+@keyframes avan-drift {
   from {
     transform: translate3d(-2%, -1%, 0) scale(1.02);
   }
@@ -244,34 +271,21 @@
     transform: translate3d(3%, 2%, 0) scale(1.08);
   }
 }
-.hero-grain {
-  position: absolute;
-  inset: 0;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
-  background-size: 140px 140px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
 
+/* ============================================================================
+   Reduced motion (A3-1): spatial motion collapses to a short opacity fade;
+   ambient loops stop.
+   ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
   .hero-atmosphere::before {
     animation: none;
-  }
-  .scroll-cue-inner {
-    animation: none;
-    transform: none;
-  }
-  .avan-underline::after {
-    transition-duration: 1ms;
   }
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
+    animation-duration: var(--avan-dur-fast) !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: var(--avan-dur-fast) !important;
+    scroll-behavior: auto !important;
   }
 }

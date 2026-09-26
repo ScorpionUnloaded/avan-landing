@@ -9,7 +9,7 @@ import type { Copy } from "@/content";
 
 export function Layers({ copy }: { copy: Copy["layers"] }) {
   return (
-    <Section id="layers" surface="cream-raised" labelledBy="layers-h">
+    <Section id="layers" surface="raised" labelledBy="layers-h">
       <div className="grid gap-14 lg:grid-cols-[1fr_1px_1fr] lg:gap-16">
         <Reveal className="flex flex-col gap-5">
           <Eyebrow>{copy.eyebrow}</Eyebrow>
@@ -19,7 +19,7 @@ export function Layers({ copy }: { copy: Copy["layers"] }) {
           <Text size="lg">{copy.body}</Text>
         </Reveal>
 
-        <div aria-hidden className="hidden bg-(--avan-border-hairline) lg:block" />
+        <div aria-hidden className="hidden bg-hairline lg:block" />
 
         <Reveal delay={0.1} className="flex flex-col justify-center gap-12">
           {copy.panels.map((panel) => (

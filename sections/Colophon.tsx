@@ -16,39 +16,36 @@ const targetHref: Record<string, (locale: Locale) => string> = {
 
 export function Colophon({ copy, locale }: { copy: Copy["colophon"]; locale: Locale }) {
   return (
-    <footer
-      id="colophon"
-      className="avan-dark avan-depth bg-ink-950 py-section-y-sm text-(--avan-text-on-inverse) md:py-section-y"
-    >
+    <footer id="colophon" data-surface="inverse" className="surface-depth bg-canvas py-section text-fg">
       <Container>
         <Reveal className="flex flex-col gap-14">
-          <Heading level="l" italic as="p" className="text-cream">
+          <Heading level="l" italic as="p" className="text-fg">
             {copy.closing}
           </Heading>
 
-          <Divider className="bg-(--avan-border-hairline-dark)" />
+          <Divider className="bg-hairline" />
 
           <div className="flex flex-col justify-between gap-12 md:flex-row md:items-end">
             <div className="flex flex-col gap-6">
               <AvanLockup gemClassName="h-9" />
               <div className="flex flex-col gap-1">
                 {copy.lines.map((line) => (
-                  <p key={line} className="font-mono text-caption text-cream/60">
+                  <p key={line} className="font-mono text-caption text-fg-muted">
                     {line}
                   </p>
                 ))}
               </div>
-              <p className="font-mono text-overline uppercase text-bronze-400">{copy.micro}</p>
+              <p className="font-sans text-overline uppercase text-eyebrow">{copy.micro}</p>
             </div>
 
             <div className="flex flex-col items-start gap-8 md:items-end">
-              <nav aria-label="Footer">
+              <nav aria-label={copy.navLabel}>
                 <ul className="flex flex-wrap gap-x-8 gap-y-3">
                   {copy.links.map((link) => (
                     <li key={link.label}>
                       <a
                         href={targetHref[link.target]?.(locale) ?? "#"}
-                        className="avan-underline font-mono text-overline uppercase text-cream/75 transition-colors duration-fast hover:text-bronze-400"
+                        className="avan-underline font-sans text-overline uppercase text-fg-muted transition-colors duration-fast hover:text-eyebrow"
                       >
                         {link.label}
                       </a>
@@ -56,7 +53,7 @@ export function Colophon({ copy, locale }: { copy: Copy["colophon"]; locale: Loc
                   ))}
                 </ul>
               </nav>
-              <PfiMark className="h-16 w-auto opacity-90" />
+              <PfiMark variant="white" className="h-16 w-auto opacity-90" />
             </div>
           </div>
         </Reveal>

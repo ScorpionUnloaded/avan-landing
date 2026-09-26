@@ -8,7 +8,7 @@ import type { Copy } from "@/content";
 
 export function Register({ copy }: { copy: Copy["register"] }) {
   return (
-    <Section id="register" surface="cream" labelledBy="register-h">
+    <Section id="register" surface="canvas" labelledBy="register-h">
       <div className="grid gap-14 lg:grid-cols-[1fr_18rem] lg:items-start lg:gap-16">
         <div>
           <Reveal className="flex max-w-3xl flex-col gap-5">
@@ -22,10 +22,10 @@ export function Register({ copy }: { copy: Copy["register"] }) {
             {copy.litany.map((line) => (
               <StaggerItem
                 key={line}
-                className="flex items-baseline gap-5 border-b border-(--avan-border-hairline) py-5 last:border-b-0"
+                className="flex items-baseline gap-5 border-b border-hairline py-5 last:border-b-0"
               >
-                <span aria-hidden className="mt-1 block h-2 w-2 shrink-0 rotate-45 border border-bronze-400" />
-                <p className="font-sans text-body-lg text-(--avan-text-primary)">{line}</p>
+                <span aria-hidden className="mt-1 block h-2 w-2 shrink-0 rotate-45 border border-gilt" />
+                <p className="font-sans text-body-lg text-fg">{line}</p>
               </StaggerItem>
             ))}
           </Stagger>

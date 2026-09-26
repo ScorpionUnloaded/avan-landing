@@ -12,12 +12,12 @@ type Status = "idle" | "submitting" | "success" | "error";
 type Nature = (typeof INQUIRY_NATURES)[number];
 
 const fieldBase =
-  "w-full rounded-sm border border-(--avan-border-hairline) bg-white px-4 py-3 font-sans text-body " +
-  "text-ftext caret-bronze-500 placeholder:text-(--avan-text-secondary) transition-colors duration-fast " +
-  "hover:border-bronze-500/60 " +
-  "focus-visible:outline-hidden focus-visible:border-bronze-600 focus-visible:ring-2 focus-visible:ring-bronze-600";
+  "w-full rounded-sm border border-hairline bg-overlay px-4 py-3 font-sans text-body " +
+  "text-fg caret-accent placeholder:text-fg-muted transition-colors duration-fast " +
+  "hover:border-accent " +
+  "focus-visible:border-strong";
 
-const labelBase = "font-mono text-overline uppercase text-(--avan-text-eyebrow)";
+const labelBase = "font-sans text-overline uppercase text-eyebrow";
 
 export function InquiryForm({
   copy,
@@ -88,7 +88,7 @@ export function InquiryForm({
     return (
       <div
         role="status"
-        className="fade-rise flex min-h-[18rem] flex-col justify-center gap-6 border border-(--avan-border-hairline) bg-cream-raised p-8"
+        className="fade-rise flex min-h-[18rem] flex-col justify-center gap-6 border border-hairline bg-raised p-8"
       >
         <GemMark className="h-12 w-auto" aria-hidden="true" title="" />
         <p className="font-serif text-display-m italic">{copy.registers[nature].success}</p>
@@ -116,12 +116,12 @@ export function InquiryForm({
             name="name"
             type="text"
             autoComplete="name"
-            className={cn(fieldBase, errors.name && "border-oxblood-700 focus-visible:border-oxblood-700 focus-visible:ring-oxblood-700")}
+            className={cn(fieldBase, errors.name && "border-error focus-visible:border-error ")}
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? "name-error" : undefined}
           />
           {errors.name && (
-            <p id="name-error" role="alert" className="font-sans text-caption text-oxblood-700">
+            <p id="name-error" role="alert" className="font-sans text-caption text-error">
               {micro.nameInvalid}
             </p>
           )}
@@ -136,12 +136,12 @@ export function InquiryForm({
             name="email"
             type="email"
             autoComplete="email"
-            className={cn(fieldBase, errors.email && "border-oxblood-700 focus-visible:border-oxblood-700 focus-visible:ring-oxblood-700")}
+            className={cn(fieldBase, errors.email && "border-error focus-visible:border-error ")}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "email-error" : undefined}
           />
           {errors.email && (
-            <p id="email-error" role="alert" className="font-sans text-caption text-oxblood-700">
+            <p id="email-error" role="alert" className="font-sans text-caption text-error">
               {micro.emailInvalid}
             </p>
           )}
@@ -183,7 +183,7 @@ export function InquiryForm({
           aria-live="polite"
           className={cn(
             "fade-soft max-w-sm font-sans text-caption",
-            status === "error" ? "text-oxblood-700" : "text-(--avan-text-secondary)",
+            status === "error" ? "text-error" : "text-fg-muted",
           )}
         >
           {status === "error" ? micro.submitError : copy.registers[nature].reassurance}

@@ -24,14 +24,14 @@ export function HouseDocument({
 }) {
   return (
     <>
-      <Nav copy={copy.nav} locale={locale} currentPath={currentPath} />
+      <Nav copy={copy.nav} locale={locale} currentPath={currentPath} topSurface="canvas" />
       <main id="main">
-        <Section id="document" surface="cream" labelledBy="doc-h" className="pt-40 md:pt-48">
+        <Section id="document" surface="canvas" labelledBy="doc-h" className="pt-40 md:pt-48">
           <Reveal className="mx-auto flex w-full max-w-3xl flex-col gap-6">
             <Heading id="doc-h" as="h1" level="l">
               {doc.title}
             </Heading>
-            <p className="font-mono text-overline uppercase text-(--avan-text-eyebrow)">
+            <p className="font-sans text-overline uppercase text-eyebrow">
               {doc.updated}
             </p>
             <Divider className="mt-4" />

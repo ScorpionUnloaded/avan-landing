@@ -25,10 +25,10 @@ export function Text({
   return (
     <Tag
       className={cn(
-        "font-sans max-w-prose68",
+        "font-sans max-w-measure",
         sizeClasses[size],
-        // On dark surfaces, --avan-text-secondary is remapped in the .avan-dark scope.
-        tone === "soft" ? "text-(--avan-text-secondary)" : "",
+        // Inverse surfaces re-scope --avan-fg-muted, so "soft" adapts automatically.
+        tone === "soft" ? "text-fg-muted" : "",
         className,
       )}
     >

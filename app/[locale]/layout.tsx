@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Cormorant_Garamond, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
-import "../../styles/tokens.css";
 import "../globals.css";
 import { getCopy } from "@/content";
 import { SITE_URL } from "@/lib/site";
 import { isLocale, locales, homePath, type Locale } from "@/lib/locale";
+import { palette, roles } from "@/lib/tokens";
+import { themeScript } from "@/lib/theme/script";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin", "latin-ext"],
@@ -64,8 +65,12 @@ export async function generateMetadata({
 }
 
 export const viewport: Viewport = {
-  themeColor: "#0E1722",
-  colorScheme: "light",
+  // The browser chrome matches the navy hero in both themes.
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: palette["ink-900"].hex },
+    { media: "(prefers-color-scheme: dark)", color: roles.dark["surface-canvas"] },
+  ],
+  colorScheme: "light dark",
 };
 
 export default async function RootLayout({ children, params }: LayoutProps<"/[locale]">) {
@@ -83,8 +88,17 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
   };
 
   return (
-    <html lang={locale} className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
-      <body className="bg-cream font-sans text-body text-ftext antialiased">
+    // suppressHydrationWarning: the head script sets data-theme/data-js before
+    // React hydrates; those two attributes are the only expected difference.
+    <html
+      lang={locale}
+      className={`${serif.variable} ${sans.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="bg-canvas font-sans text-body text-fg antialiased">
         <a href="#main" className="skip-link">
           {c.nav.skip}
         </a>

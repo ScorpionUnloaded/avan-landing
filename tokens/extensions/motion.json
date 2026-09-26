@@ -1,0 +1,51 @@
+{
+  "$description": "Motion patterns composed from the brand motion tokens. Two logged exceptions exceed 'deliberate' (500ms): the home overture and the crest reveal, both from the Brand Token Sheet's ceremonial timings. Everything else stays ≤ 500ms, transform/opacity only.",
+  "motion": {
+    "reveal": {
+      "duration": { "$type": "duration", "$value": "{duration.deliberate}" },
+      "easing": { "$type": "cubicBezier", "$value": "{easing.emphasized}" },
+      "distance": { "$type": "dimension", "$value": "{semantic.slide-distance}" }
+    },
+    "stagger": {
+      "interval": { "$type": "duration", "$value": "{semantic.stagger-interval}" },
+      "cap": { "$type": "number", "$value": "{semantic.stagger-cap}" }
+    },
+    "hover": {
+      "duration": { "$type": "duration", "$value": "{duration.fast}" },
+      "lift": { "$type": "dimension", "$value": "-2px", "$description": "Token Sheet hover_response: raise 1–2px maximum." }
+    },
+    "press": {
+      "duration": { "$type": "duration", "$value": "{duration.fast}" },
+      "scale": { "$type": "number", "$value": "{component.button-press-scale}" }
+    },
+    "underline": {
+      "duration": { "$type": "duration", "$value": "{duration.slow}" },
+      "easing": { "$type": "cubicBezier", "$value": "{easing.standard}" }
+    },
+    "gold-rule": {
+      "duration": { "$type": "duration", "$value": "{duration.slow}", "$description": "Token Sheet gold_rule_draw: 220–320ms, from centre outward." },
+      "easing": { "$type": "cubicBezier", "$value": "{easing.standard}" }
+    },
+    "overture": {
+      "duration": { "$type": "duration", "$value": "1400ms", "$description": "Exception: Token Sheet 'extended' brand-film timing (1200–1800ms); non-blocking, home only, once per session." },
+      "easing": { "$type": "cubicBezier", "$value": "{easing.emphasized}" }
+    },
+    "wordmark-settle": {
+      "duration": { "$type": "duration", "$value": "1100ms", "$description": "Exception, hero only: Token Sheet wordmark_reveal — tracking normalises from slightly open to the lockup's 0.15em." },
+      "from-tracking": { "$type": "dimension", "$value": "0.22em" },
+      "rise": { "$type": "dimension", "$value": "8px" }
+    },
+    "crest-reveal": {
+      "duration": { "$type": "duration", "$value": "800ms", "$description": "Exception: Token Sheet crest_reveal 700–900ms, /pfi only." },
+      "easing": { "$type": "cubicBezier", "$value": "{easing.emphasized}" }
+    },
+    "parallax": {
+      "default": { "$type": "number", "$value": 0.03, "$description": "Token Sheet: 0–3% relative movement, background imagery only." },
+      "hero": { "$type": "number", "$value": 0.05, "$description": "Token Sheet: hero maximum 5%; marks stay anchored." }
+    },
+    "reduced": {
+      "duration": { "$type": "duration", "$value": "{semantic.reduced-motion.duration}" },
+      "easing": { "$type": "cubicBezier", "$value": "{semantic.reduced-motion.timingFunction}" }
+    }
+  }
+}

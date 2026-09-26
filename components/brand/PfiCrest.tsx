@@ -36,11 +36,7 @@ export function PfiCrest({ motto, crestAlt }: { motto: string; crestAlt: string 
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-10% 0px" }}
         transition={{ duration: 0.6, delay: reduce ? 0 : 0.45, ease: ease.standard }}
-        className="absolute -inset-24 rounded-full"
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(197,165,114,0.14) 0%, rgba(197,165,114,0.04) 55%, transparent 100%)",
-        }}
+        className="glow-gilt absolute -inset-24 rounded-full"
       />
 
       {/* Supporters — commissioned artwork slots; hidden until the files exist. */}
@@ -66,9 +62,9 @@ export function PfiCrest({ motto, crestAlt }: { motto: string; crestAlt: string 
       )}
 
       <CrownMark className="relative h-14 w-auto md:h-16" />
-      <PfiMark className="relative h-40 w-auto md:h-48" />
+      <PfiMark variant="white" className="relative h-40 w-auto md:h-48" />
       <DrawnRule className="relative w-16" />
-      <figcaption className="relative font-mono text-overline uppercase tracking-[0.32em] text-bronze-400">
+      <figcaption className="relative font-sans text-overline uppercase tracking-[0.32em] text-eyebrow">
         {motto}
       </figcaption>
     </motion.figure>

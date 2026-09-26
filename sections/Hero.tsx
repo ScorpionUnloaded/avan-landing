@@ -25,7 +25,8 @@ export function Hero({ copy }: { copy: Copy["hero"] }) {
     <section
       id="hero"
       aria-label="AVAN Group"
-      className="avan-dark relative flex min-h-svh flex-col overflow-hidden bg-ink-950 text-cream"
+      data-surface="inverse"
+      className="relative flex min-h-svh flex-col overflow-hidden bg-canvas text-fg"
     >
       {/* Designed atmosphere — the intentional fallback shown until hero footage exists. */}
       <div aria-hidden="true" className="hero-atmosphere" />
@@ -50,20 +51,13 @@ export function Hero({ copy }: { copy: Copy["hero"] }) {
         </video>
       )}
       {/* Duotone legibility wash. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(120% 90% at 50% 10%, rgba(10,14,20,0.2) 0%, rgba(10,14,20,0.62) 55%, rgba(10,14,20,0.92) 100%)",
-        }}
-      />
+      <div aria-hidden="true" className="hero-wash" />
       <div aria-hidden="true" className="hero-grain" />
 
-      <div className="relative mx-auto flex w-full max-w-container flex-1 flex-col px-gutter-sm pb-14 pt-28 md:px-gutter md:pb-20 md:pt-32">
+      <div className="relative mx-auto flex w-full max-w-page flex-1 flex-col px-margin pb-14 pt-28 md:pb-20 md:pt-32">
         <motion.p
           {...rise(0.05)}
-          className="font-mono text-overline uppercase tracking-[0.32em] text-bronze-400"
+          className="font-sans text-overline uppercase tracking-[0.32em] text-eyebrow"
         >
           {copy.eyebrow}
         </motion.p>
@@ -98,28 +92,28 @@ export function Hero({ copy }: { copy: Copy["hero"] }) {
             {copy.wordmark}
           </motion.h1>
 
-          <motion.p {...rise(0.5)} className="mt-8 font-serif text-display-m italic text-cream/95">
+          <motion.p {...rise(0.5)} className="mt-8 font-serif text-display-m italic text-fg">
             {copy.thesis}
           </motion.p>
 
-          <motion.p {...rise(0.62)} className="mt-4 max-w-xl font-sans text-body-lg text-cream/70">
+          <motion.p {...rise(0.62)} className="mt-4 max-w-xl font-sans text-body-lg text-fg-muted">
             {copy.headline}
           </motion.p>
         </div>
 
         <motion.div
           {...rise(0.75)}
-          className="flex items-center justify-between gap-6 border-t border-(--avan-border-hairline-dark) pt-6"
+          className="flex items-center justify-between gap-6 border-t border-hairline pt-6"
         >
           <a
             href={copy.secondaryCta.hash}
-            className="avan-underline font-mono text-overline uppercase text-cream/80 transition-colors duration-fast hover:text-bronze-400"
+            className="avan-underline font-sans text-overline uppercase text-fg transition-colors duration-fast hover:text-eyebrow"
           >
             {copy.secondaryCta.label}
           </a>
-          <span className="flex items-center gap-3 font-mono text-overline uppercase text-cream/50">
+          <span className="flex items-center gap-3 font-sans text-overline uppercase text-fg-muted">
             {copy.scrollCue}
-            <span aria-hidden className="block h-8 w-px bg-bronze-400/60" />
+            <span aria-hidden className="block h-8 w-px bg-gilt/60" />
           </span>
         </motion.div>
       </div>

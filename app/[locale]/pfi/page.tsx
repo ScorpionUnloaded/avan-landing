@@ -42,13 +42,14 @@ export default async function PfiPage({ params }: PageProps<"/[locale]/pfi">) {
         {/* The ceremonial register: the crest presides; the argument follows. */}
         <section
           aria-labelledby="pfi-h"
-          className="avan-dark avan-depth flex min-h-[92svh] flex-col justify-center bg-ink-950 pb-section-y-sm pt-32 text-(--avan-text-primary) md:pt-40"
+          data-surface="inverse"
+          className="surface-depth flex min-h-[92svh] flex-col justify-center bg-canvas pb-section pt-32 text-fg md:pt-40"
         >
           <Container className="flex flex-col items-center gap-14 text-center">
             <PfiCrest motto={p.hero.motto} crestAlt={p.hero.crestAlt} />
             <Reveal delay={0.3} className="flex max-w-2xl flex-col items-center gap-6">
               <Eyebrow>{p.hero.eyebrow}</Eyebrow>
-              <Heading id="pfi-h" as="h1" level="l" className="text-cream">
+              <Heading id="pfi-h" as="h1" level="l">
                 {p.hero.head}
               </Heading>
               <Text size="lg" tone="soft" className="text-balance">
@@ -59,7 +60,7 @@ export default async function PfiPage({ params }: PageProps<"/[locale]/pfi">) {
         </section>
 
         {/* The Standard — three practices, ledger register. */}
-        <Section id="standard" surface="cream" labelledBy="standard-h">
+        <Section id="standard" surface="canvas" labelledBy="standard-h">
           <Reveal className="flex max-w-3xl flex-col gap-6">
             <Eyebrow>{p.standard.eyebrow}</Eyebrow>
             <Heading id="standard-h" level="l">
@@ -70,19 +71,19 @@ export default async function PfiPage({ params }: PageProps<"/[locale]/pfi">) {
             </Text>
           </Reveal>
 
-          <Stagger className="mt-20 border-t border-(--avan-border-hairline)">
+          <Stagger className="mt-20 border-t border-hairline">
             {p.standard.rows.map((row, i) => (
               <StaggerItem key={row.title}>
-                <article className="grid gap-x-8 gap-y-4 border-b border-(--avan-border-hairline) py-10 md:grid-cols-12 md:items-baseline md:py-12">
+                <article className="grid gap-x-8 gap-y-4 border-b border-hairline py-10 md:grid-cols-12 md:items-baseline md:py-12">
                   <div className="flex items-baseline gap-6 md:col-span-4">
-                    <span className="font-mono text-caption text-bronze-500">0{i + 1}</span>
+                    <span className="font-mono text-caption text-eyebrow">0{i + 1}</span>
                     <h3 className="font-serif text-display-m font-medium">{row.title}</h3>
                   </div>
                   <div className="md:col-span-7">
-                    <p className="font-sans text-body-lg text-(--avan-text-primary)">
+                    <p className="font-sans text-body-lg text-fg">
                       {row.lede}
                     </p>
-                    <p className="mt-2 max-w-prose68 font-sans text-body text-(--avan-text-secondary)">
+                    <p className="mt-2 max-w-measure font-sans text-body text-fg-muted">
                       {row.body}
                     </p>
                   </div>
@@ -93,7 +94,7 @@ export default async function PfiPage({ params }: PageProps<"/[locale]/pfi">) {
         </Section>
 
         {/* PFI Intelligence — the systems layer. */}
-        <Section id="intelligence" surface="cream-raised" labelledBy="intelligence-h">
+        <Section id="intelligence" surface="raised" labelledBy="intelligence-h">
           <div className="grid gap-10 lg:grid-cols-12">
             <Reveal className="flex flex-col gap-6 lg:col-span-6">
               <Eyebrow>{p.intelligence.eyebrow}</Eyebrow>
@@ -110,7 +111,7 @@ export default async function PfiPage({ params }: PageProps<"/[locale]/pfi">) {
         </Section>
 
         {/* Governance — the terms of reliance. */}
-        <Section id="governance" surface="cream" labelledBy="governance-h">
+        <Section id="governance" surface="canvas" labelledBy="governance-h">
           <Reveal className="flex max-w-3xl flex-col gap-6">
             <Eyebrow>{p.governance.eyebrow}</Eyebrow>
             <Heading id="governance-h" level="l">
@@ -120,9 +121,9 @@ export default async function PfiPage({ params }: PageProps<"/[locale]/pfi">) {
           <Stagger className="mt-16 grid gap-10 md:grid-cols-3">
             {p.governance.items.map((item) => (
               <StaggerItem key={item.term}>
-                <dl className="flex flex-col gap-3 border-t border-(--avan-border-hairline) pt-6">
+                <dl className="flex flex-col gap-3 border-t border-hairline pt-6">
                   <dt className="font-serif text-display-m font-medium">{item.term}</dt>
-                  <dd className="font-sans text-body text-(--avan-text-secondary)">
+                  <dd className="font-sans text-body text-fg-muted">
                     {item.line}
                   </dd>
                 </dl>
@@ -132,15 +133,15 @@ export default async function PfiPage({ params }: PageProps<"/[locale]/pfi">) {
         </Section>
 
         {/* The institutional ask. */}
-        <Section id="pfi-cta" surface="navy" labelledBy="pfi-cta-h" containerClassName="text-center">
+        <Section id="pfi-cta" surface="inverse" labelledBy="pfi-cta-h" containerClassName="text-center">
           <Reveal className="mx-auto flex max-w-2xl flex-col items-center gap-8">
-            <Heading id="pfi-cta-h" level="l" className="text-cream">
+            <Heading id="pfi-cta-h" level="l">
               {p.cta.head}
             </Heading>
             <Text tone="soft" className="text-balance">
               {p.cta.body}
             </Text>
-            <Button href={institutionalCta} variant="hairline" className="text-cream">
+            <Button href={institutionalCta} variant="hairline">
               {p.cta.button}
             </Button>
           </Reveal>

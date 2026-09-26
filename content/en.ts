@@ -15,12 +15,14 @@ export const en = {
   },
 
   nav: {
+    homeLabel: "AVAN Group, home",
     links: [
       { label: "Rivers", hash: "#rivers" },
-      { label: "The House", hash: "#layers" },
+      { label: "The House", hash: "#provenance" },
       { label: "Access", hash: "#privé" },
     ],
     cta: { label: "Request Introduction", hash: "#privé" },
+    theme: { toggle: "Theme", system: "System", light: "Light", dark: "Dark" },
     skip: "Skip to content",
     localeSwitch: { code: "FR", aria: "Version française" },
   },
@@ -204,6 +206,7 @@ export const en = {
   },
 
   colophon: {
+    navLabel: "Site",
     closing: "Ordo Ex Intelligentia.",
     lines: [
       "AVAN GROUP — a patrimonial house.",

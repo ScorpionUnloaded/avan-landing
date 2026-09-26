@@ -1,0 +1,374 @@
+{
+  "$description": "AVAN semantic colour roles per scope. Every value references the brand palette (brand/avan-color-tokens.json); the two contrast corrections are logged in docs/brand-decisions.md. Each key becomes --avan-<key>, redefined per scope.",
+  "theme": {
+    "light": {
+      "$description": "Default scope: cream field (A2.1 semantic.light).",
+      "surface-canvas": {
+        "$type": "color",
+        "$value": "{semantic.light.surface-base}"
+      },
+      "surface-raised": {
+        "$type": "color",
+        "$value": "{semantic.light.surface-raised}"
+      },
+      "surface-overlay": {
+        "$type": "color",
+        "$value": "{color.base.white}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{semantic.light.text-primary}"
+      },
+      "fg-muted": {
+        "$type": "color",
+        "$value": "{semantic.light.text-secondary}"
+      },
+      "fg-eyebrow": {
+        "$type": "color",
+        "$value": "{color.bronze.700}",
+        "$description": "Brand names bronze.600 (4.23:1 on cream, AA-large only). Eyebrows are 12px, so bronze.700 (6.9:1) — A2.1: 'any cell below AA fails the build'."
+      },
+      "fg-gilt": {
+        "$type": "color",
+        "$value": "{color.bronze.600}",
+        "$description": "Gilt text at display sizes only (≥ 24px): bronze.600 is 4.2:1 on cream — passes the 3:1 large-text threshold, not body text."
+      },
+      "border-hairline": {
+        "$type": "color",
+        "$value": "{semantic.light.border-hairline}"
+      },
+      "border-strong": {
+        "$type": "color",
+        "$value": "{color.bronze.600}",
+        "$description": "Field and control boundaries: ≥ 3:1 against the surface (WCAG 1.4.11)."
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{semantic.light.action-accent}"
+      },
+      "gilt": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "action-bg": {
+        "$type": "color",
+        "$value": "{semantic.light.action-primary-bg}"
+      },
+      "action-bg-hover": {
+        "$type": "color",
+        "$value": "{color.ink.800}"
+      },
+      "action-fg": {
+        "$type": "color",
+        "$value": "{color.base.cream}"
+      },
+      "focus-ring": {
+        "$type": "color",
+        "$value": "{color.bronze.600}",
+        "$description": "State tokens name alias.brand-secondary (bronze.500, 2.9:1 on cream). Focus indicators need 3:1, so bronze.600 on light surfaces; bronze.400 on dark ones."
+      },
+      "state-success": {
+        "$type": "color",
+        "$value": "{semantic.light.state-success}"
+      },
+      "state-warning": {
+        "$type": "color",
+        "$value": "{semantic.light.state-warning}"
+      },
+      "state-error": {
+        "$type": "color",
+        "$value": "{semantic.light.state-error}"
+      },
+      "state-info": {
+        "$type": "color",
+        "$value": "{semantic.light.state-info}"
+      },
+      "scrim": {
+        "$type": "color",
+        "$value": "rgba(14, 23, 34, 0.78)",
+        "$description": "A2.4: text over imagery sits on an ink scrim rising bottom-up."
+      },
+      "selection-bg": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "selection-fg": {
+        "$type": "color",
+        "$value": "{color.ink.950}"
+      }
+    },
+    "dark": {
+      "$description": "Dark theme: 'a re-mapped second palette, not an inversion' (A2.1 semantic.dark).",
+      "surface-canvas": {
+        "$type": "color",
+        "$value": "{semantic.dark.surface-base}"
+      },
+      "surface-raised": {
+        "$type": "color",
+        "$value": "{semantic.dark.surface-raised}"
+      },
+      "surface-overlay": {
+        "$type": "color",
+        "$value": "{semantic.dark.surface-overlay}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{semantic.dark.text-primary}"
+      },
+      "fg-muted": {
+        "$type": "color",
+        "$value": "{semantic.dark.text-secondary}"
+      },
+      "fg-eyebrow": {
+        "$type": "color",
+        "$value": "{semantic.dark.text-eyebrow}"
+      },
+      "fg-gilt": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "border-hairline": {
+        "$type": "color",
+        "$value": "{semantic.dark.border-hairline}"
+      },
+      "border-strong": {
+        "$type": "color",
+        "$value": "{color.bronze.500}"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{semantic.dark.action-accent}"
+      },
+      "gilt": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "action-bg": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "action-bg-hover": {
+        "$type": "color",
+        "$value": "{color.bronze.300}"
+      },
+      "action-fg": {
+        "$type": "color",
+        "$value": "{color.ink.950}"
+      },
+      "focus-ring": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "state-success": {
+        "$type": "color",
+        "$value": "{semantic.dark.state-success}"
+      },
+      "state-warning": {
+        "$type": "color",
+        "$value": "{semantic.dark.state-warning}"
+      },
+      "state-error": {
+        "$type": "color",
+        "$value": "{semantic.dark.state-error}"
+      },
+      "state-info": {
+        "$type": "color",
+        "$value": "{semantic.dark.state-info}"
+      },
+      "scrim": {
+        "$type": "color",
+        "$value": "rgba(14, 23, 34, 0.78)"
+      },
+      "selection-bg": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "selection-fg": {
+        "$type": "color",
+        "$value": "{color.ink.950}"
+      }
+    },
+    "inverse": {
+      "$description": "Authority beats in the light theme (hero, stone, voice, colophon): Ink Navy field (semantic.light.surface-inverse) with the brand's on-inverse text.",
+      "surface-canvas": {
+        "$type": "color",
+        "$value": "{semantic.light.surface-inverse}"
+      },
+      "surface-raised": {
+        "$type": "color",
+        "$value": "{semantic.dark.surface-raised}"
+      },
+      "surface-overlay": {
+        "$type": "color",
+        "$value": "{semantic.dark.surface-overlay}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{semantic.light.text-on-inverse}"
+      },
+      "fg-muted": {
+        "$type": "color",
+        "$value": "{semantic.dark.text-secondary}"
+      },
+      "fg-eyebrow": {
+        "$type": "color",
+        "$value": "{semantic.dark.text-eyebrow}"
+      },
+      "fg-gilt": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "border-hairline": {
+        "$type": "color",
+        "$value": "{semantic.dark.border-hairline}"
+      },
+      "border-strong": {
+        "$type": "color",
+        "$value": "{color.bronze.500}"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{semantic.dark.action-accent}"
+      },
+      "gilt": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "action-bg": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "action-bg-hover": {
+        "$type": "color",
+        "$value": "{color.bronze.300}"
+      },
+      "action-fg": {
+        "$type": "color",
+        "$value": "{color.ink.950}"
+      },
+      "focus-ring": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "state-success": {
+        "$type": "color",
+        "$value": "{semantic.dark.state-success}"
+      },
+      "state-warning": {
+        "$type": "color",
+        "$value": "{semantic.dark.state-warning}"
+      },
+      "state-error": {
+        "$type": "color",
+        "$value": "{semantic.dark.state-error}"
+      },
+      "state-info": {
+        "$type": "color",
+        "$value": "{semantic.dark.state-info}"
+      },
+      "scrim": {
+        "$type": "color",
+        "$value": "rgba(14, 23, 34, 0.78)"
+      },
+      "selection-bg": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "selection-fg": {
+        "$type": "color",
+        "$value": "{color.ink.950}"
+      }
+    },
+    "inverse-dark": {
+      "$description": "Authority beats in the dark theme: one step deeper than the dark canvas, to the brand's near-black (color.base.black), so the cadence still reads.",
+      "surface-canvas": {
+        "$type": "color",
+        "$value": "{color.base.black}"
+      },
+      "surface-raised": {
+        "$type": "color",
+        "$value": "{semantic.dark.surface-base}"
+      },
+      "surface-overlay": {
+        "$type": "color",
+        "$value": "{semantic.dark.surface-raised}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{semantic.dark.text-primary}"
+      },
+      "fg-muted": {
+        "$type": "color",
+        "$value": "{semantic.dark.text-secondary}"
+      },
+      "fg-eyebrow": {
+        "$type": "color",
+        "$value": "{semantic.dark.text-eyebrow}"
+      },
+      "fg-gilt": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "border-hairline": {
+        "$type": "color",
+        "$value": "{semantic.dark.border-hairline}"
+      },
+      "border-strong": {
+        "$type": "color",
+        "$value": "{color.bronze.500}"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{semantic.dark.action-accent}"
+      },
+      "gilt": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "action-bg": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "action-bg-hover": {
+        "$type": "color",
+        "$value": "{color.bronze.300}"
+      },
+      "action-fg": {
+        "$type": "color",
+        "$value": "{color.ink.950}"
+      },
+      "focus-ring": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "state-success": {
+        "$type": "color",
+        "$value": "{semantic.dark.state-success}"
+      },
+      "state-warning": {
+        "$type": "color",
+        "$value": "{semantic.dark.state-warning}"
+      },
+      "state-error": {
+        "$type": "color",
+        "$value": "{semantic.dark.state-error}"
+      },
+      "state-info": {
+        "$type": "color",
+        "$value": "{semantic.dark.state-info}"
+      },
+      "scrim": {
+        "$type": "color",
+        "$value": "rgba(10, 14, 20, 0.8)"
+      },
+      "selection-bg": {
+        "$type": "color",
+        "$value": "{alias.brand-gilt}"
+      },
+      "selection-fg": {
+        "$type": "color",
+        "$value": "{color.ink.950}"
+      }
+    }
+  }
+}

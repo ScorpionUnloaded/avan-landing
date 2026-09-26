@@ -15,12 +15,14 @@ export const fr: Copy = {
   },
 
   nav: {
+    homeLabel: "AVAN Group, accueil",
     links: [
       { label: "Rivières", hash: "#rivers" },
-      { label: "La Maison", hash: "#layers" },
+      { label: "La Maison", hash: "#provenance" },
       { label: "Accès", hash: "#privé" },
     ],
     cta: { label: "Demander une introduction", hash: "#privé" },
+    theme: { toggle: "Thème", system: "Système", light: "Clair", dark: "Sombre" },
     skip: "Aller au contenu",
     localeSwitch: { code: "EN", aria: "English version" },
   },
@@ -204,6 +206,7 @@ export const fr: Copy = {
   },
 
   colophon: {
+    navLabel: "Plan du site",
     closing: "Ordo Ex Intelligentia.",
     lines: [
       "AVAN GROUP — une maison patrimoniale.",

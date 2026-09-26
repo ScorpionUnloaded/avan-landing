@@ -13,7 +13,7 @@ export function DrawnRule({ className }: { className?: string }) {
   return (
     <motion.span
       aria-hidden
-      className={cn("inline-block h-px w-8 origin-left bg-bronze-400", className)}
+      className={cn("inline-block h-px w-8 origin-left bg-gilt", className)}
       initial={reduce ? { opacity: 0 } : { scaleX: 0, opacity: 0.4 }}
       whileInView={reduce ? { opacity: 1 } : { scaleX: 1, opacity: 1 }}
       viewport={{ once: true, margin: "-10% 0px" }}

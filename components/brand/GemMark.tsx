@@ -2,11 +2,12 @@ import { cn } from "@/lib/cn";
 
 /**
  * AVAN Group primary symbol — the Avan Yeqara gem. Master vector, do not redraw.
- * 14 vertices, bilaterally symmetric. Stroke defaults to Sovereign Bronze #C5A572.
+ * 14 vertices, bilaterally symmetric. Strokes in currentColor, which defaults to
+ * the gilt token; set a text colour to use the black or white variants.
  */
 export function GemMark({
   className,
-  stroke = "#C5A572",
+  stroke = "currentColor",
   strokeWidth = 6,
   title = "AVAN Group — the Avan Yeqara",
   ...rest
@@ -16,7 +17,7 @@ export function GemMark({
       viewBox="0 0 461 1000"
       role="img"
       aria-label={title}
-      className={cn("block", className)}
+      className={cn("block text-gilt", className)}
       {...rest}
     >
       <title>{title}</title>

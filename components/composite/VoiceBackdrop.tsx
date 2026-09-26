@@ -26,13 +26,7 @@ export function VoiceBackdrop() {
           onError={() => setFailed(true)}
         />
       )}
-      <span
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(80% 70% at 50% 40%, rgba(14,23,34,0.55) 0%, rgba(10,14,20,0.92) 100%)",
-        }}
-      />
+      <span aria-hidden className="wash-deep absolute inset-0" />
     </div>
   );
 }

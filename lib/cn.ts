@@ -1,15 +1,17 @@
 import { clsx, type ClassValue } from "clsx";
 import { extendTailwindMerge } from "tailwind-merge";
+import { textSizes } from "@/lib/tokens/tokens.generated";
 
 /**
  * tailwind-merge must be taught the brand's named font sizes: otherwise it
- * can't tell `text-display-l` (size) from `text-cream` (color), treats them as
- * one group, and silently drops the size when a color class is merged in.
+ * can't tell `text-display-l` (size) from `text-fg` (colour), treats them as
+ * one group, and silently drops the size when a colour class is merged in.
+ * The list is generated from the type tokens, so it can never fall out of sync.
  */
 const twMerge = extendTailwindMerge({
   extend: {
     theme: {
-      text: ["display-xl", "display-l", "display-m", "stat", "body-lg", "body", "caption", "overline"],
+      text: [...textSizes],
     },
   },
 });

@@ -1,0 +1,98 @@
+{
+  "$description": "Additions to the brand typography source. The fluid scale is A2.2's (360→1280px); roles map the landing page's type onto brand sizes. See docs/brand-decisions.md.",
+  "type": {
+    "family": {
+      "display": {
+        "$type": "fontFamily",
+        "$value": "var(--font-cormorant), 'Cormorant Garamond', Georgia, 'Times New Roman', serif",
+        "$description": "font.family.display, fed by next/font."
+      },
+      "text": {
+        "$type": "fontFamily",
+        "$value": "var(--font-text), \"Suisse Int'l\", -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        "$description": "font.family.text without the Inter fallback (the audit spec forbids shipping Inter). --font-text is Hanken Grotesk until Suisse Int'l is licensed."
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": "var(--font-plex-mono), 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace",
+        "$description": "font.family.mono; Suisse Int'l Mono is unlicensed, so the brand-named fallback IBM Plex Mono leads."
+      }
+    },
+    "fluid": {
+      "$description": "A2.2 fluid sizes (min at 360px, max at 1280px). Max values equal font.size.* in the brand JSON.",
+      "2xl": { "$type": "dimension", "$value": "clamp(1.25rem, 1.1522rem + 0.435vw, 1.5rem)" },
+      "3xl": { "$type": "dimension", "$value": "clamp(1.5rem, 1.3533rem + 0.652vw, 1.875rem)" },
+      "4xl": { "$type": "dimension", "$value": "clamp(1.75rem, 1.5543rem + 0.87vw, 2.25rem)" },
+      "5xl": { "$type": "dimension", "$value": "clamp(2.125rem, 1.7826rem + 1.522vw, 3rem)" },
+      "6xl": { "$type": "dimension", "$value": "clamp(2.5rem, 2.0109rem + 2.174vw, 3.75rem)" },
+      "7xl": { "$type": "dimension", "$value": "clamp(2.875rem, 2.2391rem + 2.826vw, 4.5rem)" },
+      "8xl": { "$type": "dimension", "$value": "clamp(3.5rem, 2.5217rem + 4.348vw, 6rem)" },
+      "9xl": { "$type": "dimension", "$value": "clamp(4rem, 2.4348rem + 6.957vw, 8rem)" }
+    },
+    "role": {
+      "wordmark": {
+        "$type": "typography",
+        "$description": "Hero wordmark: build plan §C.2 display-xl (72→200px); tracking from the lockup spec (avan-design-tokens wordmark.avan 0.15em).",
+        "$value": { "fontSize": "clamp(4.5rem, 12vw, 12.5rem)", "lineHeight": 0.85, "letterSpacing": "0.15em", "fontWeight": 500 }
+      },
+      "display-xl": {
+        "$type": "typography",
+        "$value": { "fontSize": "{type.fluid.9xl}", "lineHeight": "{font.lineHeight.9xl}", "letterSpacing": "{font.letterSpacing.9xl}", "fontWeight": 500 }
+      },
+      "display-l": {
+        "$type": "typography",
+        "$description": "Section heads.",
+        "$value": { "fontSize": "{type.fluid.8xl}", "lineHeight": "{font.lineHeight.8xl}", "letterSpacing": "{font.letterSpacing.8xl}", "fontWeight": 500 }
+      },
+      "display-m": {
+        "$type": "typography",
+        "$description": "Sub-heads, pull-quotes, thesis lines.",
+        "$value": { "fontSize": "{type.fluid.5xl}", "lineHeight": "{font.lineHeight.5xl}", "letterSpacing": "{font.letterSpacing.5xl}", "fontWeight": 500 }
+      },
+      "display-s": {
+        "$type": "typography",
+        "$description": "Card and row titles.",
+        "$value": { "fontSize": "{type.fluid.3xl}", "lineHeight": "{font.lineHeight.3xl}", "letterSpacing": "{font.letterSpacing.3xl}", "fontWeight": 500 }
+      },
+      "stat": {
+        "$type": "typography",
+        "$description": "Figures (mono, tabular).",
+        "$value": { "fontSize": "{type.fluid.8xl}", "lineHeight": 1, "letterSpacing": "0", "fontWeight": 400 }
+      },
+      "lede": {
+        "$type": "typography",
+        "$description": "semantic.lede (display face, regular).",
+        "$value": { "fontSize": "{type.fluid.2xl}", "lineHeight": 1.4, "letterSpacing": "0", "fontWeight": 400 }
+      },
+      "body-lg": {
+        "$type": "typography",
+        "$value": { "fontSize": "{font.size.lg}", "lineHeight": "{font.lineHeight.base}", "letterSpacing": "0", "fontWeight": 400 }
+      },
+      "body": {
+        "$type": "typography",
+        "$description": "semantic.body.",
+        "$value": { "fontSize": "{font.size.base}", "lineHeight": "{font.lineHeight.base}", "letterSpacing": "0", "fontWeight": 400 }
+      },
+      "caption": {
+        "$type": "typography",
+        "$description": "semantic.caption.",
+        "$value": { "fontSize": "{font.size.sm}", "lineHeight": 1.5, "letterSpacing": "{font.letterSpacing.sm}", "fontWeight": 400 }
+      },
+      "overline": {
+        "$type": "typography",
+        "$description": "semantic.overline (text face, medium, 0.32em, uppercase).",
+        "$value": { "fontSize": "{font.size.xs}", "lineHeight": 1.2, "letterSpacing": "0.32em", "fontWeight": 500 }
+      },
+      "label": {
+        "$type": "typography",
+        "$description": "semantic.label.",
+        "$value": { "fontSize": "{font.size.xs}", "lineHeight": 1.2, "letterSpacing": "0.14em", "fontWeight": 600 }
+      },
+      "button": {
+        "$type": "typography",
+        "$description": "semantic.button.",
+        "$value": { "fontSize": "{font.size.sm}", "lineHeight": 1, "letterSpacing": "0.06em", "fontWeight": 500 }
+      }
+    }
+  }
+}

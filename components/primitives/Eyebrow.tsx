@@ -4,7 +4,7 @@ import { DrawnRule } from "@/components/motion/DrawnRule";
 /**
  * Mono overline label, preceded by a drawn gold rule (the gilt lives in the
  * ornament — decorative bronze-400 — while the text stays AA-compliant
- * bronze-700 on light / bronze-400 on dark via the .avan-dark scope).
+ * bronze-700 on light / bronze-400 on dark and inverse surfaces, via tokens).
  */
 export function Eyebrow({
   children,
@@ -18,7 +18,7 @@ export function Eyebrow({
   return (
     <Tag
       className={cn(
-        "inline-flex items-center gap-3 font-mono text-overline uppercase text-(--avan-text-eyebrow)",
+        "inline-flex items-center gap-3 font-sans text-overline uppercase text-eyebrow",
         className,
       )}
     >

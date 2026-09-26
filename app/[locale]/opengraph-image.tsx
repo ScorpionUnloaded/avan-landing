@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { palette, roles } from "@/lib/tokens";
 
 // Edge runtime: renders on-demand (not prerendered at build), which also avoids a
 // Windows-only @vercel/og prerender bug in the Node runtime.
@@ -30,7 +31,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#0E1722",
+          background: palette["ink-950"].hex,
           padding: "72px",
         }}
       >
@@ -38,7 +39,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
           style={{
             fontSize: 22,
             letterSpacing: 8,
-            color: "#C5A572",
+            color: palette["bronze-400"].hex,
             textTransform: "uppercase",
             fontFamily: "monospace",
           }}
@@ -52,7 +53,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
               fontSize: 210,
               lineHeight: 1,
               letterSpacing: 20,
-              color: "#F4F1EA",
+              color: palette.cream.hex,
               fontFamily: "Georgia, serif",
               fontWeight: 500,
             }}
@@ -60,11 +61,11 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
             AVAN
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-            <div style={{ width: 120, height: 3, background: "#C5A572" }} />
+            <div style={{ width: 120, height: 3, background: palette["bronze-400"].hex }} />
             <div
               style={{
                 fontSize: 30,
-                color: "#ECEAE2",
+                color: roles.dark.fg,
                 fontFamily: "Georgia, serif",
                 fontStyle: "italic",
               }}
@@ -77,7 +78,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
         <div
           style={{
             fontSize: 20,
-            color: "#9FA8B4",
+            color: roles.dark["fg-muted"],
             fontFamily: "monospace",
             letterSpacing: 2,
           }}

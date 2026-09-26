@@ -7,7 +7,7 @@ import type { Copy } from "@/content";
 
 export function Figures({ copy }: { copy: Copy["figures"] }) {
   return (
-    <Section id="figures" surface="cream-raised" labelledBy="figures-h">
+    <Section id="figures" surface="raised" labelledBy="figures-h">
       <Reveal className="flex flex-col gap-10">
         <Eyebrow as="h2">{copy.eyebrow}</Eyebrow>
         <StatStrip stats={copy.stats} />

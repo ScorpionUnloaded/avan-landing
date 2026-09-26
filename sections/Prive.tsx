@@ -9,7 +9,7 @@ import type { Copy } from "@/content";
 
 export function Prive({ copy, micro }: { copy: Copy["prive"]; micro: Copy["microcopy"] }) {
   return (
-    <Section id="privé" surface="cream" labelledBy="prive-h">
+    <Section id="privé" surface="canvas" labelledBy="prive-h">
       <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
         <Reveal className="flex flex-col gap-6 lg:sticky lg:top-28 lg:self-start">
           <Eyebrow>{copy.eyebrow}</Eyebrow>
@@ -20,13 +20,13 @@ export function Prive({ copy, micro }: { copy: Copy["prive"]; micro: Copy["micro
 
           {/* The protocol — the terms under which an inquiry is received,
               stated where the hesitation happens (plan §J.3, trust density). */}
-          <dl className="mt-4 flex flex-col gap-5 border-t border-(--avan-border-hairline) pt-7">
+          <dl className="mt-4 flex flex-col gap-5 border-t border-hairline pt-7">
             {copy.protocol.map((p) => (
               <div key={p.term} className="grid gap-1.5">
-                <dt className="font-mono text-overline uppercase text-(--avan-text-eyebrow)">
+                <dt className="font-sans text-overline uppercase text-eyebrow">
                   {p.term}
                 </dt>
-                <dd className="max-w-md font-sans text-caption text-(--avan-text-secondary)">
+                <dd className="max-w-md font-sans text-caption text-fg-muted">
                   {p.line}
                 </dd>
               </div>

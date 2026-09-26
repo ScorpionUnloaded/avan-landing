@@ -8,7 +8,7 @@ import { cn } from "@/lib/cn";
  */
 export function CrownMark({
   className,
-  stroke = "#C5A572",
+  stroke = "currentColor",
   strokeWidth = 6,
   title = "",
   ...rest
@@ -19,7 +19,7 @@ export function CrownMark({
       role={title ? "img" : "presentation"}
       aria-label={title || undefined}
       aria-hidden={title ? undefined : true}
-      className={cn("block", className)}
+      className={cn("block text-gilt", className)}
       {...rest}
     >
       {title ? <title>{title}</title> : null}

@@ -10,7 +10,7 @@ import type { Copy } from "@/content";
 
 export function Stone({ copy }: { copy: Copy["stone"] }) {
   return (
-    <Section id="stone" surface="navy" labelledBy="stone-h">
+    <Section id="stone" surface="inverse" labelledBy="stone-h">
       <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-20">
         <div className="flex flex-col gap-6">
           <Reveal className="flex flex-col gap-6">
@@ -40,11 +40,7 @@ export function Stone({ copy }: { copy: Copy["stone"] }) {
             {/* Candlelight behind the stone — the gem should glow, not float in flat navy. */}
             <span
               aria-hidden
-              className="absolute -inset-20 rounded-full"
-              style={{
-                background:
-                  "radial-gradient(closest-side, rgba(197,165,114,0.16) 0%, rgba(197,165,114,0.05) 55%, transparent 100%)",
-              }}
+              className="glow-gilt absolute -inset-20 rounded-full"
             />
             <StoneGem className="relative h-64 md:h-80 lg:h-[28rem]" />
           </div>

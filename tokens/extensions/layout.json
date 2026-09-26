@@ -1,0 +1,41 @@
+{
+  "$description": "Layout values from A2.3 (grid table) and the build plan's section rhythm, added to the token source so nothing is invented in components.",
+  "layout": {
+    "container": {
+      "page": { "$type": "dimension", "$value": "{semantic.container-2xl}", "$description": "A2.3: 1200px content width at 2xl." },
+      "measure": { "$type": "dimension", "$value": "68ch", "$description": "Build plan §C.2: body max line length ~68ch." }
+    },
+    "margin": {
+      "$description": "A2.3 outer margins per breakpoint.",
+      "base": { "$type": "dimension", "$value": "{space.5}" },
+      "md": { "$type": "dimension", "$value": "{space.6}" },
+      "lg": { "$type": "dimension", "$value": "{space.8}" },
+      "xl": { "$type": "dimension", "$value": "{space.10}" },
+      "2xl": { "$type": "dimension", "$value": "{space.12}" }
+    },
+    "gutter": {
+      "$description": "A2.3 column gutters per breakpoint.",
+      "base": { "$type": "dimension", "$value": "{space.4}" },
+      "md": { "$type": "dimension", "$value": "{space.5}" },
+      "lg": { "$type": "dimension", "$value": "{space.6}" },
+      "2xl": { "$type": "dimension", "$value": "{space.8}" }
+    },
+    "section": {
+      "$description": "Build plan §C.3: 'audit-grade whitespace is a brand signal — do not compress.' The brand's section-gap (64px) is the app value; the marketing template (A5-2) keeps the editorial rhythm.",
+      "pad": { "$type": "dimension", "$value": "clamp(6rem, 12vh, 10rem)" },
+      "pad-sm": { "$type": "dimension", "$value": "4.5rem" }
+    },
+    "nav": {
+      "height": { "$type": "dimension", "$value": "{space.16}" },
+      "height-md": { "$type": "dimension", "$value": "{space.20}" }
+    },
+    "touch-target": { "$type": "dimension", "$value": "{component.touch-target-min}" }
+  },
+  "elevation": {
+    "lift": {
+      "$type": "shadow",
+      "$description": "Build plan §C.5: an almost-invisible lift on interactive cards.",
+      "$value": [{ "offsetX": "0", "offsetY": "1px", "blur": "0", "spread": "0", "color": "rgba(20,30,45,0.04)" }]
+    }
+  }
+}

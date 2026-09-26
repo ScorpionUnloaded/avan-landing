@@ -1,6 +1,6 @@
 import { cn } from "@/lib/cn";
 
-/** Centered 1320px content column with responsive inline padding. */
+/** The brand's page column (A2.3): 1200px of content inside responsive outer margins. */
 export function Container({
   className,
   children,
@@ -8,9 +8,5 @@ export function Container({
   className?: string;
   children: React.ReactNode;
 }) {
-  return (
-    <div className={cn("mx-auto w-full max-w-container px-gutter-sm md:px-gutter", className)}>
-      {children}
-    </div>
-  );
+  return <div className={cn("mx-auto w-full max-w-page px-margin", className)}>{children}</div>;
 }

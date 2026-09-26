@@ -13,7 +13,7 @@ export function Divider({
       role="presentation"
       className={cn(
         "block w-full",
-        weight === "rule" ? "h-[3px] bg-bronze-400" : "h-px bg-(--avan-border-hairline)",
+        weight === "rule" ? "h-[3px] bg-gilt" : "h-px bg-hairline",
         className,
       )}
     />

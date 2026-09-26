@@ -33,6 +33,9 @@ jobs:
 
       - run: npm ci
 
+      - name: Design tokens are in sync with their sources
+        run: npm run tokens:check
+
       - name: Lint
         run: npm run lint
 

@@ -9,7 +9,7 @@ import type { Copy } from "@/content";
 
 export function Provenance({ copy }: { copy: Copy["provenance"] }) {
   return (
-    <Section id="provenance" surface="cream" labelledBy="provenance-h">
+    <Section id="provenance" surface="canvas" labelledBy="provenance-h">
       {/* Asymmetric editorial spread: monumental head left, measured text offset
           right — a composed page, not a centered stack. */}
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">

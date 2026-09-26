@@ -1,18 +1,23 @@
 import { cn } from "@/lib/cn";
 import { Container } from "./Container";
 
-type Surface = "cream" | "cream-raised" | "navy";
+/**
+ * canvas  — the cream field (dark theme: ink)
+ * raised  — cream-raised, a quieter step for tables and figures
+ * inverse — the Ink Navy authority beat; re-scopes every semantic role
+ */
+export type Surface = "canvas" | "raised" | "inverse";
 
 const surfaceClasses: Record<Surface, string> = {
-  cream: "bg-cream text-ftext",
-  "cream-raised": "bg-cream-raised text-ftext",
-  navy: "bg-ink-950 text-(--avan-text-on-inverse)",
+  canvas: "bg-canvas text-fg",
+  raised: "bg-raised text-fg",
+  inverse: "surface-depth bg-canvas text-fg",
 };
 
-/** A page movement: full-bleed surface, audit-grade vertical rhythm, 1320px inner column. */
+/** A page movement: full-bleed surface, audit-grade vertical rhythm, the brand's page column. */
 export function Section({
   id,
-  surface = "cream",
+  surface = "canvas",
   labelledBy,
   className,
   containerClassName,
@@ -29,12 +34,8 @@ export function Section({
     <section
       id={id}
       aria-labelledby={labelledBy}
-      className={cn(
-        "scroll-mt-24 py-section-y-sm md:py-section-y",
-        surfaceClasses[surface],
-        surface === "navy" && "avan-dark avan-depth",
-        className,
-      )}
+      data-surface={surface === "inverse" ? "inverse" : undefined}
+      className={cn("py-section", surfaceClasses[surface], className)}
     >
       <Container className={containerClassName}>{children}</Container>
     </section>

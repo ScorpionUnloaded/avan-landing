@@ -21,7 +21,7 @@ export function AvanLockup({
         <span className="font-serif text-2xl font-medium tracking-[0.15em]">AVAN</span>
         {/* Sub-label needs its own line-height room; hide it in the tightest bar
             widths where it collided with the link row. */}
-        <span className="mt-0.5 hidden font-mono text-[9px] uppercase leading-none tracking-[0.3em] text-(--avan-text-eyebrow) sm:block">
+        <span className="mt-0.5 hidden font-mono text-[9px] uppercase leading-none tracking-[0.3em] text-eyebrow sm:block">
           Group
         </span>
       </span>

@@ -33,13 +33,13 @@ function Figure({ value, label, active }: Stat & { active: boolean }) {
   }, [active, isNumeric, reduce, target, pad, value]);
 
   return (
-    <div className="flex flex-col gap-3 border-t border-(--avan-border-hairline) pt-5">
+    <div className="flex flex-col gap-3 border-t border-hairline pt-5">
       {/* bronze-600 on cream-raised = 4.50:1 — passes AA even at normal size,
           comfortably at this monumental size. The gild returns where it's legal. */}
-      <span className="font-mono text-stat font-normal tabular-nums text-bronze-600">
+      <span className="font-mono text-stat font-normal tabular-nums text-fg-gilt">
         {display}
       </span>
-      <span className="font-mono text-overline uppercase text-(--avan-text-eyebrow)">
+      <span className="font-sans text-overline uppercase text-eyebrow">
         {label}
       </span>
     </div>
