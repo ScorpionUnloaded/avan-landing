@@ -1,4 +1,5 @@
 import type { Copy } from "./en";
+import { errorCopy } from "./errors";
 
 /**
  * AVAN Group — copie française. Écrite dans la voix de la maison : déclarative,
@@ -10,6 +11,7 @@ export const fr: Copy = {
     motto: "Ordo Ex Intelligentia",
     mottoGloss: "L'ordre né de l'intelligence",
     title: "AVAN Group — Une maison patrimoniale",
+    strap: "Une maison patrimoniale — finance · technologie · capital · culture.",
     description:
       "AVAN Group est une maison patrimoniale — une maison mère souveraine et multigénérationnelle qui audite, bâtit et fait fructifier la valeur à travers la finance, la technologie, le capital et la culture.",
   },
@@ -229,6 +231,15 @@ export const fr: Copy = {
     submitError: "Quelque chose nous a interrompus. Réessayez.",
     loading: "Préparation du hall…",
   },
+
+  notFound: {
+    eyebrow: "404",
+    head: "Cette porte ne s'ouvre pas.",
+    body: "La page demandée ne fait pas partie de la maison.",
+    cta: "Revenir à la maison",
+  },
+
+  error: errorCopy.fr,
 
   pfi: {
     meta: {

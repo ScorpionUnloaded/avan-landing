@@ -17,6 +17,8 @@
     "prebuild": "npm run tokens:check"
   },
   "dependencies": {
+    "@vercel/analytics": "2.0.1",
+    "@vercel/speed-insights": "2.0.0",
     "clsx": "2.1.1",
     "motion": "13.4.4",
     "next": "16.3.6",

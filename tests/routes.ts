@@ -1,12 +1,12 @@
+import { locales, localizedPath, type Locale } from "../lib/i18n/config";
+import { routes } from "../lib/i18n/routes";
+
 /**
- * Every public route, per locale. Extended as routes are added; the e2e, SEO
- * and axe suites iterate this list so no page ships untested.
+ * Every public route × locale, generated from the route table, so a page added
+ * there is covered by the e2e, SEO and axe suites with no further edits.
  */
-export type RouteCase = { path: string; locale: "en" | "fr"; name: string };
+export type RouteCase = { path: string; locale: Locale; name: string };
 
-const EN_PATHS = ["/", "/pfi", "/legal", "/privacy"];
-
-export const ROUTES: RouteCase[] = EN_PATHS.flatMap((p) => [
-  { path: p, locale: "en" as const, name: `en ${p}` },
-  { path: p === "/" ? "/fr" : `/fr${p}`, locale: "fr" as const, name: `fr ${p}` },
-]);
+export const ROUTES: RouteCase[] = routes.flatMap((r) =>
+  locales.map((locale) => ({ path: localizedPath(locale, r.path), locale, name: `${locale} ${r.path}` })),
+);

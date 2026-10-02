@@ -6,6 +6,7 @@ import { AvanLockup } from "@/components/brand/AvanLockup";
 import { Button } from "@/components/primitives/Button";
 import { ThemeToggle } from "@/components/chrome/ThemeToggle";
 import { homePath, type Locale } from "@/lib/locale";
+import { localizedPath } from "@/lib/i18n/config";
 import type { Copy } from "@/content";
 
 /**
@@ -40,7 +41,7 @@ export function Nav({
   // same-page jumps, from "/pfi" they navigate home first.
   const anchor = (hash: string) => (currentPath === "" ? hash : `${home}${hash}`);
   const other: Locale = locale === "en" ? "fr" : "en";
-  const switchHref = `${other === "en" ? "" : "/fr"}${currentPath}` || "/";
+  const switchHref = localizedPath(other, currentPath || "/");
 
   return (
     <header

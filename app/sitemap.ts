@@ -1,34 +1,23 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
+import { defaultLocale, locales, localizedPath } from "@/lib/i18n/config";
+import { routes } from "@/lib/i18n/routes";
 
-const routes = ["", "/pfi", "/legal", "/privacy"];
+const abs = (path: string) => new URL(path, SITE_URL).toString();
 
+/** Every route × locale from the route table, each listing all its language versions. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-  return routes.flatMap((route) => [
-    {
-      url: `${SITE_URL}${route || "/"}`,
-      lastModified: now,
+  return routes.flatMap((route) => {
+    const languages: Record<string, string> = Object.fromEntries(
+      locales.map((l) => [l, abs(localizedPath(l, route.path))]),
+    );
+    languages["x-default"] = abs(localizedPath(defaultLocale, route.path));
+    return locales.map((locale) => ({
+      url: abs(localizedPath(locale, route.path)),
+      lastModified: new Date(route.lastModified),
       changeFrequency: "yearly" as const,
-      priority: route === "" ? 1 : 0.6,
-      alternates: {
-        languages: {
-          en: `${SITE_URL}${route || "/"}`,
-          fr: `${SITE_URL}/fr${route}`,
-        },
-      },
-    },
-    {
-      url: `${SITE_URL}/fr${route}`,
-      lastModified: now,
-      changeFrequency: "yearly" as const,
-      priority: route === "" ? 0.9 : 0.5,
-      alternates: {
-        languages: {
-          en: `${SITE_URL}${route || "/"}`,
-          fr: `${SITE_URL}/fr${route}`,
-        },
-      },
-    },
-  ]);
+      priority: locale === defaultLocale ? route.priority : Math.round(route.priority * 90) / 100,
+      alternates: { languages },
+    }));
+  });
 }

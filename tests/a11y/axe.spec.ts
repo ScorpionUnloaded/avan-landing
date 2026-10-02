@@ -13,7 +13,7 @@ for (const scheme of ["light", "dark"] as const) {
   test.describe(`${scheme} scheme`, () => {
     test.use({ colorScheme: scheme });
 
-    for (const r of ROUTES) {
+    for (const r of [...ROUTES, { path: "/this-door-does-not-open", name: "404" }]) {
       test(`${r.name} has no serious accessibility violations`, async ({ page }) => {
         await page.goto(r.path, { waitUntil: "networkidle" });
         // Let entrance reveals finish so contrast is measured on final colours.

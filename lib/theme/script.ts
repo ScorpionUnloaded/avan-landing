@@ -4,7 +4,7 @@
  * "system" (or no choice) leaves data-theme unset and the CSS follows
  * prefers-color-scheme (see tokens.generated.css).
  *
- * Kept as a plain string so its SHA-256 can be allow-listed by the CSP.
+ * The layout renders it with the request's CSP nonce (see lib/security/csp.ts).
  */
 export const THEME_STORAGE_KEY = "avan-theme";
 

@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+// No runtime code generation: zod's JIT probes `new Function`, which the
+// site's CSP (no 'unsafe-eval') reports as a violation on every page load.
+z.config({ jitless: true });
+
 export const INQUIRY_NATURES = [
   "Capital",
   "Advisory",

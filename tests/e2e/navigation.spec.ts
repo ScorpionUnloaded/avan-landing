@@ -17,10 +17,18 @@ test.describe("routing", () => {
     expect(res.headers()["location"]).toMatch(/\/pfi$/);
   });
 
-  test("unknown paths return a real 404", async ({ page }) => {
-    const res = await page.goto("/this-door-does-not-open");
-    expect(res?.status()).toBe(404);
-  });
+  for (const [path, lang, head] of [
+    ["/this-door-does-not-open", "en", "This door doesn't open."],
+    ["/fr/cette-porte", "fr", "Cette porte ne s'ouvre pas."],
+  ] as const) {
+    test(`unknown paths return a real, localized 404 (${lang})`, async ({ page }) => {
+      const res = await page.goto(path);
+      expect(res?.status()).toBe(404);
+      await expect(page.locator("html")).toHaveAttribute("lang", lang);
+      await expect(page.locator("h1")).toHaveText(head);
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+    });
+  }
 
   test("the locale switch leads to the other language", async ({ page }) => {
     await page.goto("/");

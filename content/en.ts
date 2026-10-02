@@ -1,3 +1,5 @@
+import { errorCopy } from "./errors";
+
 /**
  * AVAN Group — English copy (plan §D + Phase 2 additions). Deliberately not
  * `as const`: `typeof en` is the shared `Copy` type, so strings must widen.
@@ -10,6 +12,7 @@ export const en = {
     motto: "Ordo Ex Intelligentia",
     mottoGloss: "Order from Intelligence",
     title: "AVAN Group — A patrimonial house",
+    strap: "A patrimonial house — finance · technology · capital · culture.",
     description:
       "AVAN Group is a patrimonial house — a sovereign, multigenerational parent that audits, builds, and compounds value across finance, technology, capital, and culture.",
   },
@@ -229,6 +232,15 @@ export const en = {
     submitError: "Something interrupted us. Try once more.",
     loading: "Preparing the hall…",
   },
+
+  notFound: {
+    eyebrow: "404",
+    head: "This door doesn't open.",
+    body: "The page you asked for is not part of the house.",
+    cta: "Return to the house",
+  },
+
+  error: errorCopy.en,
 
   pfi: {
     meta: {

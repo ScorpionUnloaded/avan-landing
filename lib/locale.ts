@@ -1,19 +1,15 @@
-export const locales = ["en", "fr"] as const;
-export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = "en";
+import { localizedPath, type Locale } from "./i18n/config";
 
-export function isLocale(value: string): value is Locale {
-  return (locales as readonly string[]).includes(value);
-}
+export { locales, defaultLocale, isLocale, type Locale } from "./i18n/config";
 
 /** Home path for a locale — English is canonical at the root, French prefixed. */
 export function homePath(locale: Locale): string {
-  return locale === "en" ? "/" : "/fr";
+  return localizedPath(locale, "/");
 }
 
 /** Locale-aware path for a route like "/pfi" or "/legal". */
 export function localeHref(locale: Locale, path: string): string {
-  return locale === "en" ? path : `/fr${path}`;
+  return localizedPath(locale, path);
 }
 
 /** Same-page-or-cross-page anchor into the home page (e.g. "#privé"). */

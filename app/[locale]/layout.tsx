@@ -1,12 +1,14 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { Cormorant_Garamond, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "../globals.css";
 import { getCopy } from "@/content";
 import { SITE_URL } from "@/lib/site";
-import { isLocale, locales, homePath, type Locale } from "@/lib/locale";
+import { isLocale, locales, type Locale } from "@/lib/locale";
 import { palette, roles } from "@/lib/tokens";
 import { themeScript } from "@/lib/theme/script";
+import { SiteAnalytics } from "@/components/chrome/SiteAnalytics";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin", "latin-ext"],
@@ -36,6 +38,11 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+/**
+ * Site-wide defaults only. Each page supplies its own title, description,
+ * canonical URL, alternates and Open Graph data via lib/i18n/metadata.ts;
+ * icons and the manifest come from the app/ file conventions.
+ */
 export async function generateMetadata({
   params,
 }: LayoutProps<"/[locale]">): Promise<Metadata> {
@@ -47,20 +54,8 @@ export async function generateMetadata({
     title: { default: c.site.title, template: `%s · ${c.site.name}` },
     description: c.site.description,
     applicationName: c.site.name,
-    alternates: {
-      canonical: homePath(locale),
-      languages: { en: "/", fr: "/fr" },
-    },
-    openGraph: {
-      type: "website",
-      url: homePath(locale),
-      siteName: c.site.name,
-      title: c.site.title,
-      description: c.site.description,
-      locale: locale === "fr" ? "fr_FR" : "en_US",
-    },
-    twitter: { card: "summary_large_image", title: c.site.title, description: c.site.description },
-    robots: { index: true, follow: true },
+    appleWebApp: { title: c.site.name, statusBarStyle: "black-translucent" },
+    formatDetection: { telephone: false, email: false, address: false },
   };
 }
 
@@ -77,15 +72,9 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const c = getCopy(locale);
-
-  const orgJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: c.site.name,
-    description: c.site.description,
-    url: SITE_URL,
-    slogan: c.site.motto,
-  };
+  // Per-request nonce from proxy.ts. Reading it renders every page dynamically,
+  // which is what lets Next stamp the same nonce on its own scripts.
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
 
   return (
     // suppressHydrationWarning: the head script sets data-theme/data-js before
@@ -96,17 +85,14 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script nonce={nonce} dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="bg-canvas font-sans text-body text-fg antialiased">
         <a href="#main" className="skip-link">
           {c.nav.skip}
         </a>
         {children}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
-        />
+        {process.env.VERCEL ? <SiteAnalytics /> : null}
       </body>
     </html>
   );

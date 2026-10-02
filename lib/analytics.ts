@@ -1,24 +1,22 @@
 "use client";
 
-/**
- * Provider-agnostic analytics shim. Swap the sink for a real provider later
- * (Plausible, PostHog, GA) without touching call sites.
- */
-type AvanEvent =
+import { track as vercelTrack } from "@vercel/analytics";
+
+/** Every custom event the site records. Properties are never personal data. */
+export type AvanEvent =
   | "hero_view"
   | "rivers_view"
   | "prive_view"
   | "inquiry_start"
   | "inquiry_submit";
 
-export function track(event: AvanEvent, props?: Record<string, unknown>) {
+type Props = Record<string, string | number | boolean>;
+
+/**
+ * Records a custom event in Vercel Web Analytics (cookieless). Custom events
+ * need a Pro plan; without one, or off Vercel, the call is a silent no-op.
+ */
+export function track(event: AvanEvent, props?: Props) {
   if (typeof window === "undefined") return;
-  const w = window as unknown as { plausible?: (e: string, o?: unknown) => void };
-  if (typeof w.plausible === "function") {
-    w.plausible(event, props ? { props } : undefined);
-    return;
-  }
-  if (process.env.NODE_ENV !== "production") {
-    console.debug("[avan:analytics]", event, props ?? {});
-  }
+  vercelTrack(event, props);
 }

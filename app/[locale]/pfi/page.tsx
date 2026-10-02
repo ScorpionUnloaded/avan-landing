@@ -11,21 +11,17 @@ import { Heading } from "@/components/primitives/Heading";
 import { Text } from "@/components/primitives/Text";
 import { Button } from "@/components/primitives/Button";
 import { PfiCrest } from "@/components/brand/PfiCrest";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { getCopy } from "@/content";
 import { isLocale, homePath, type Locale } from "@/lib/locale";
+import { buildMetadata } from "@/lib/i18n/metadata";
+import { pageGraph } from "@/lib/seo/jsonld";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/pfi">): Promise<Metadata> {
   const { locale: raw } = await params;
   const locale: Locale = isLocale(raw) ? raw : "en";
-  const c = getCopy(locale).pfi.meta;
-  return {
-    title: c.title,
-    description: c.description,
-    alternates: {
-      canonical: locale === "en" ? "/pfi" : "/fr/pfi",
-      languages: { en: "/pfi", fr: "/fr/pfi" },
-    },
-  };
+  const m = getCopy(locale).pfi.meta;
+  return buildMetadata({ locale, route: "pfi", title: m.title, description: m.description, absoluteTitle: true });
 }
 
 export default async function PfiPage({ params }: PageProps<"/[locale]/pfi">) {
@@ -148,6 +144,7 @@ export default async function PfiPage({ params }: PageProps<"/[locale]/pfi">) {
         </Section>
       </main>
       <Colophon copy={c.colophon} locale={locale} />
+      <JsonLd data={pageGraph({ locale, route: "pfi", name: p.meta.title })} />
     </>
   );
 }
