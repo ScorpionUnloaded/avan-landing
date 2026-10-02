@@ -16,7 +16,11 @@ jobs:
     timeout-minutes: 30
     # Same Playwright build as local development (1.56.1 ↔ Chromium 1194), so
     # browser behaviour and screenshots match across machines.
-    container: mcr.microsoft.com/playwright:v1.56.1-noble
+    # --ipc=host: the image's documented setting, so Chrome is not starved by
+    # Docker's 64 MB /dev/shm.
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host
     env:
       HOME: /root
       CI: "true"

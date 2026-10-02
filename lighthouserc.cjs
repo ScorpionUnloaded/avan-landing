@@ -14,7 +14,9 @@ module.exports = {
       url: [`http://localhost:${port}/`, `http://localhost:${port}/fr`],
       numberOfRuns: 1,
       chromePath: process.env.CHROME_PATH,
-      settings: { chromeFlags: "--no-sandbox --headless=new" },
+      // --disable-dev-shm-usage: Docker's default 64 MB /dev/shm hangs Chrome's
+      // renderer (PROTOCOL_TIMEOUT in CI). Playwright passes the same flag.
+      settings: { chromeFlags: "--no-sandbox --headless=new --disable-dev-shm-usage" },
     },
     assert: {
       assertions: {

@@ -22,7 +22,7 @@ const PATHS = (args.paths ?? "/,/fr").split(",");
 
 const chrome = await chromeLauncher.launch({
   chromePath: process.env.PW_CHROMIUM ?? "/opt/pw-browsers/chromium",
-  chromeFlags: ["--headless=new", "--no-sandbox", "--disable-gpu"],
+  chromeFlags: ["--headless=new", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
 });
 
 const results = [];
